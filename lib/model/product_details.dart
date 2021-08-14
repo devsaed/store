@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:said_store/model/sub_category.dart';
 
-class ProductDetails {
+class ProductDetails{
   late int id;
   late String nameEn;
   late String nameAr;
@@ -8,7 +10,7 @@ class ProductDetails {
   late String infoAr;
   late int price;
   late int quantity;
-  late int overalRate;
+  late int? overalRate;
   late int subCategoryId;
   late int productRate;
   late double? offerPrice;

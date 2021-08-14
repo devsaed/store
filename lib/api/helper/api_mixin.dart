@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/utils/helper.dart';
 import 'package:http/http.dart';
 

@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
+import 'package:said_store/model/Home.dart';
+import 'package:said_store/model/product_details.dart';
 import 'package:said_store/model/user.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:said_store/utils/helper.dart';
 import '../api_settings.dart';
@@ -144,5 +146,45 @@ class UserApiController with ApiMixin {
     }
     return false;
   }
+
+
+  Future<bool> contactUS(BuildContext context, {required String subject, required String msg}) async {
+    var response = await http.post(
+        getUrl(ApiSettings.CONTACT_US),
+        body: {
+          'subject': subject,
+          'message': msg,
+        },
+        headers: requestHeaders
+    );
+    if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
+      return true;
+    } else if (response.statusCode != 500) {
+      showMessage(context, response, error: true);
+    }else{
+      handleServerError(context);
+    }
+    return false;
+  }
+
+
+  Future<Home?> initHome() async {
+    var response = await http.get(
+        getUrl(ApiSettings.HOME),
+        headers: {
+          HttpHeaders.authorizationHeader: SharedPreferencesController().token,
+          'X-Requested-With': 'XMLHttpRequest',
+          'lang': SharedPreferencesController().languageCode,
+          'Accept': 'application/json'
+        });
+    if (isSuccessRequest(response.statusCode)) {
+      var data = jsonDecode(response.body)['data'];
+      Home home = Home.fromJson(data);
+      return home;
+    }
+  }
+
+
 
 }

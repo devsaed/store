@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/api/controllers/cities_api_controller.dart';
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/model/city.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
 
 class CitiesGetxController extends GetxController {
   final CitiesApiController citiesApiController = CitiesApiController();

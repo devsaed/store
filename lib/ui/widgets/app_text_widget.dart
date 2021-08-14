@@ -7,6 +7,9 @@ class AppTextWidget extends StatelessWidget {
   final double fontSize;
   final String fontFamily;
   final TextAlign textAlign;
+  late TextDecoration textDecoration;
+  late Color decorationColor;
+
 
   AppTextWidget({
     required this.content,
@@ -15,6 +18,8 @@ class AppTextWidget extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.fontSize = 15,
     this.textAlign = TextAlign.center,
+    this.textDecoration = TextDecoration.none,
+    this.decorationColor = Colors.transparent
   });
 
   @override
@@ -23,6 +28,8 @@ class AppTextWidget extends StatelessWidget {
       content,
       textAlign: textAlign,
       style: TextStyle(
+        decoration: textDecoration,
+        decorationColor: decorationColor,
         color: color,
         fontWeight: fontWeight,
         fontSize: fontSize,

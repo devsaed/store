@@ -30,7 +30,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   void dispose() {
     _oldPasswordEditingController.dispose();
     _newPasswordConfirmationEditingController.dispose();
-    _newPasswordConfirmationEditingController.dispose();
+    _newPasswordEditingController.dispose();
     super.dispose();
   }
 

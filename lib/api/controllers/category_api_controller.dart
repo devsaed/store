@@ -19,12 +19,9 @@ class CategoryApiController with ApiMixin {
 
   Future<List<SubCategory>> getSubCategory({required int id}) async {
     var response = await http.get(getUrl(ApiSettings.CATEGORY + '/$id'),headers: header);
-    print('*****************************');
     if (isSuccessRequest(response.statusCode)) {
       var data = jsonDecode(response.body)['list'] as List;
       List<SubCategory> subCategories = data.map((e) => SubCategory.fromJson(e)).toList();
-      print('*****************************');
-      print(subCategories[0].id);
       return subCategories;
     }
     return [];

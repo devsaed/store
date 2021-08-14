@@ -1,17 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:said_store/api/controllers/userApiContraller.dart';
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
+import 'package:said_store/model/Home.dart';
 import 'package:said_store/model/user.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
 
 class UsersGetxController extends GetxController {
   UserApiController _userApiController = UserApiController();
   late User? user;
+  late Home? home;
 
   static UsersGetxController get to => Get.find();
 
   @override
   void onInit() {
+    initHome();
     if (SharedPreferencesController().loggedIn){
       user = SharedPreferencesController().user;
     }
@@ -56,4 +59,11 @@ class UsersGetxController extends GetxController {
     return await _userApiController.activateAccount(context, mobile: mobile, code: code);
   }
 
+  Future<bool> contactUs(BuildContext context, {required String subject,required String msg}) async {
+    return await _userApiController.contactUS(context, subject: subject, msg: msg);
+  }
+
+  Future<void> initHome() async {
+    home =  await _userApiController.initHome();
+  }
 }

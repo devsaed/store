@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:said_store/ui/app/home_screen.dart';
+import 'package:said_store/ui/app/main_screen.dart';
 import 'package:said_store/ui/auth/forget_password_screen.dart';
 import 'package:said_store/ui/auth/register_screen.dart';
 import 'package:said_store/ui/category/category_screen.dart';
@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
       password: passwordEditingController.text,
     );
     if (status) {
-      Get.off(HomeScreen());
+      Get.off(MainScreen());
     } else {
       Helper.showSnackBar(context, text: 'Login failed, check your credentials!', error: true);
     }

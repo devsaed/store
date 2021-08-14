@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:said_store/ui/app/home_screen.dart';
-import 'package:said_store/ui/auth/activation_account_screen.dart';
-import 'package:said_store/ui/auth/change_password_screen.dart';
-import 'package:said_store/ui/auth/register_screen.dart';
-import 'package:said_store/ui/category/category_screen.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
+import 'package:said_store/getx/product_getx_controller.dart';
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
+import 'package:said_store/ui/app/main_screen.dart';
+
 import 'package:said_store/ui/on_boarding/on_boarding_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
@@ -20,11 +18,12 @@ class LaunchScreen extends StatefulWidget {
 }
 
 class _LaunchScreenState extends State<LaunchScreen> {
-  UsersGetxController _usersController = Get.put(UsersGetxController());
+  UsersGetxController usersController = Get.put(UsersGetxController());
+  ProductGetxController controller = Get.put(ProductGetxController());
+
   @override
   void initState() {
-    // Widget route = SharedPreferencesController().loggedIn ? ChangePasswordScreen() : OnBoardingScreen();
-    Widget route = SharedPreferencesController().loggedIn ? HomeScreen() : OnBoardingScreen();
+    Widget route = SharedPreferencesController().loggedIn ? MainScreen() : OnBoardingScreen();
     Future.delayed(Duration(seconds: 3), () => Get.off(route));
     super.initState();
   }

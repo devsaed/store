@@ -45,17 +45,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               OnBoardingWidget(
                 title: 'Great deals',
                 subTitle: 'D’ont miss out our flash sale  and daily speclais with great discounts',
-                image: 'on_boarding1',
+                image: 'shop',
               ),
               OnBoardingWidget(
                 title: 'High Quality',
                 subTitle: 'You can only find high-quality and affordable clothing for your litle baby',
-                image: 'on_boarding2',
+                image: 'shop2',
               ),
               OnBoardingWidget(
                 title: 'Invite freinds',
                 subTitle: 'You can invite your best freinds and share with them your first order',
-                image: 'on_boarding3',
+                image: 'shop3',
               ),
             ],
           ),

@@ -15,9 +15,8 @@ class OnBoardingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(),
         Image.asset(
-          'assets/image/$image.png',
+          'assets/image/$image.jpg',
           height: 513.h,
           width: double.infinity,
           fit: BoxFit.cover,

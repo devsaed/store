@@ -1,8 +1,8 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:said_store/model/category.dart';
 import 'package:said_store/model/sub_category.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
+import 'package:said_store/utils/app_colors.dart';
 
 import 'app_text_widget.dart';
 
@@ -16,27 +16,38 @@ class SubCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        color: Colors.white,
-        padding: EdgeInsets.symmetric(vertical: 20),
-        child: Row(
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        elevation: 3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 50,
-              height: 50,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.circular(10)),
-              child: AppTextWidget(
-                content : SharedPreferencesController().languageCode == 'ar' ? subCategory.nameAr[0]: subCategory.nameEn[0],
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: CachedNetworkImage(
+                height: 172,
+                width: double.infinity,
+                imageUrl: subCategory.imageUrl,
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.PRIMARY_COLOR,
+                  ),
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                fit: BoxFit.cover,
               ),
             ),
-            SizedBox(width: 15),
-            Text(SharedPreferencesController().languageCode == 'ar' ? subCategory.nameAr: subCategory.nameEn),
+            SizedBox(
+              height: 10,
+            ),
+            AppTextWidget(
+              content: subCategory.nameEn,
+              fontSize: 15,
+              color: AppColors.PRIMARY_TEXT_COLOR,
+              fontWeight: FontWeight.w600,
+            ),
+
           ],
         ),
       ),

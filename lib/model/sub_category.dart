@@ -3,8 +3,8 @@ class SubCategory {
   late String nameEn;
   late String nameAr;
   late int categoryId;
-  late String image;
-  late int productsCount;
+  late String? image;
+  late int? productsCount;
   late String imageUrl;
 
   SubCategory();

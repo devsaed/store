@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:said_store/shared_preferences/preferences.dart';
+import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 
 class AppLocale extends Translations {
   @override
