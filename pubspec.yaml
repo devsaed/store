@@ -34,6 +34,9 @@ dependencies:
   cached_network_image: ^3.1.0
   flutter_rating_bar: ^4.0.0
   sqflite: ^2.0.0+3
+#  flutter_credit_card: ^2.0.0
+  date_time_picker: ^2.1.0
+  intl: ^0.17.0
 
 
 dev_dependencies:
@@ -85,3 +88,6 @@ flutter:
         - asset: assets/font/sf/SF-Pro-Display-Thin.otf
           weight: 100
 
+    - family: ha
+      fonts:
+        - asset: assets/font/halter/Halter.ttf

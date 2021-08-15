@@ -22,7 +22,7 @@ class AddressApiController with ApiMixin {
   }
 
 
-  Future<Address?> createTask({required BuildContext context, required Address address}) async {
+  Future<Address?> createAddress({required BuildContext context, required Address address}) async {
     var response = await http.post(
       getUrl(ApiSettings.ADDRESS),
       headers: requestHeaders,
@@ -30,9 +30,9 @@ class AddressApiController with ApiMixin {
         'name': address.name,
         'info': address.info,
         'contact_number': address.contactNumber,
-        'city_id': address.cityId,
-        'lat': address.lat,
-        'lang': address.lang,
+        'city_id': address.cityId.toString(),
+        'lat': address.lat??'',
+        'lang': address.lang??'',
       },
     );
     if (isSuccessRequest(response.statusCode)) {
@@ -70,9 +70,9 @@ class AddressApiController with ApiMixin {
     return false;
   }
 
-  Future<bool> deleteAddress({required BuildContext context, required Address address}) async {
+  Future<bool> deleteAddress({required BuildContext context, required addressId}) async {
     var response = await http.delete(
-      getUrl(ApiSettings.ADDRESS + '/${address.id}'),
+      getUrl(ApiSettings.ADDRESS + '/$addressId'),
       headers: requestHeaders,
     );
 

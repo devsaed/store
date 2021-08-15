@@ -10,7 +10,7 @@ class CategoryGetxController extends GetxController {
   final CategoryApiController categoryApiController = CategoryApiController();
   RxList<Category> categories = <Category>[].obs;
   RxList<SubCategory> subCategories = <SubCategory>[].obs;
-  RxBool loading = true.obs;
+  RxBool loading = false.obs;
 
   static CategoryGetxController get to => Get.find();
 

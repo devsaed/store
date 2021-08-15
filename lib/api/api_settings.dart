@@ -1,5 +1,4 @@
 class ApiSettings {
-
   //Auth Request
   static const String _BASE_URL = 'https://smart-store.mr-dev.tech/api/';
   static const String LOGIN = _BASE_URL + "auth/login";
@@ -18,32 +17,16 @@ class ApiSettings {
   //category Req && sub category
   static const String CATEGORY = _BASE_URL + "categories";
 
-  //product re
+  //product request
   static const String PRODUCT = _BASE_URL + "sub-categories";
   static const String PRODUCT_DETAILS = _BASE_URL + "products";
   static const String FAVORITE_PRODUCT = _BASE_URL + "favorite-products";
   static const String RATTING_PRODUCT = _BASE_URL + "products/rate";
 
-  //sub category
-
-
-
-//address
-
+  //address
   static const String ADDRESS = _BASE_URL + "addresses";
 
-
-
-
-
-// static const String _API_BASE_URL = _BASE_URL + '/api/';
-  // static const String IMAGES_URL = _BASE_URL + '/images/';
-  //
-  // static const String GET_USERS = _API_BASE_URL + "users";
-
-  // static const String REGISTER = _API_BASE_URL + "students/auth/register";
-
-
-  // static const String TASK = _API_BASE_URL + "tasks";
+  //card
+  static const String CARD = _BASE_URL + "payment-cards";
 
 }

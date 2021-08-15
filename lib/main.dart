@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         locale: Locale(SharedPreferencesController().languageCode),
         home: LaunchScreen(),
         theme: ThemeData(
+          primaryColor: AppColors.PRIMARY_COLOR,
           appBarTheme: AppBarTheme(
             color: Colors.transparent,
             elevation: 0,

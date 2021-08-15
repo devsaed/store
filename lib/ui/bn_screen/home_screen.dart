@@ -24,11 +24,12 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeGetxController controller = Get.put(HomeGetxController());
   UsersGetxController usersController = Get.put(UsersGetxController());
 
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeGetxController>(builder: (HomeGetxController controller){
-      return controller.isLoading ? Center(child: CircularProgressIndicator()):
-      ListView(
+      return controller.isLoading.value ? Center(child: CircularProgressIndicator()):
+      controller.home != null ? ListView(
         children: [
           SizedBox(
             height: 400,
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      );
+      ):Center(child: Text('error'),);
     });
   }
 }

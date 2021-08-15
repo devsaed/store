@@ -5,7 +5,7 @@ import 'package:said_store/model/Home.dart';
 
 class HomeGetxController extends GetxController {
   Home? home;
-  bool isLoading = true;
+  RxBool isLoading = false.obs;
   UserApiController dbController = UserApiController();
 
   static HomeGetxController get to => Get.find();
@@ -18,9 +18,9 @@ class HomeGetxController extends GetxController {
 
 
   Future<void> initHome() async {
-    isLoading = true;
+    isLoading.value = true;
     home = await dbController.initHome();
-    isLoading = false;
+    isLoading.value = false;
     update();
   }
 

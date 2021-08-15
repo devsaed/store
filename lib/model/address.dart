@@ -3,8 +3,8 @@ class Address {
   late String info;
   late String contactNumber;
   late int cityId;
-  late double? lat;
-  late double? lang;
+  double? lat;
+  double? lang;
   late int id;
 
   Address();

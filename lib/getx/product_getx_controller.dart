@@ -11,7 +11,7 @@ class ProductGetxController extends GetxController {
   RxList<Product> products = <Product>[].obs;
   RxList<ProductDetails> favoriteProducts = <ProductDetails>[].obs;
   Rx<ProductDetails?> productDetails = ProductDetails().obs;
-  RxBool loading = true.obs;
+  RxBool loading = false.obs;
 
 
   static ProductGetxController get to => Get.find();
