@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:said_store/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CodeTextField extends StatelessWidget {
   final TextEditingController textController;
@@ -15,8 +16,8 @@ class CodeTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 50,
+      height: 50.h,
+      width: 50.h,
       child: TextField(
         controller: textController,
         focusNode: focusNode,
@@ -27,16 +28,16 @@ class CodeTextField extends StatelessWidget {
         decoration: InputDecoration(
           counterText: '',
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.h),
             borderSide: BorderSide(
-              width: 1,
+              width: 1.w,
               color: Colors.grey,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.h),
             borderSide: BorderSide(
-              width: 1,
+              width: 1.w,
               color: AppColors.PRIMARY_COLOR,
             ),
           ),

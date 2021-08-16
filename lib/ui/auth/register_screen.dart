@@ -6,7 +6,7 @@ import 'package:said_store/getx/user_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/model/city.dart';
 import 'package:said_store/ui/auth/activation_account_screen.dart';
-import 'package:said_store/ui/auth/cities_screen.dart';
+import 'package:said_store/ui/city/cities_screen.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
@@ -67,10 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           AppTextField(
             controller: nameController,
             label: 'Name',
-            suffix: Icon(
-              Icons.person,
-              color: AppColors.PRIMARY_COLOR,
-            ),
+            suffix: Icon(Icons.person, color: AppColors.PRIMARY_COLOR),
           ),
           SizedBox(height: 20.h),
           AppTextField(
@@ -220,7 +217,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         phoneController.text.isNotEmpty &&
         city != null) {
       return true;
+
     }
+    Helper.showSnackBar(context, text:'Enter Required Data' , error: true);
     return false;
   }
 

@@ -8,6 +8,8 @@ import 'package:said_store/utils/app_colors.dart';
 import 'package:said_store/utils/helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'login_screen.dart';
+
 class ChangePasswordScreen extends StatefulWidget {
   @override
   _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
@@ -48,9 +50,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       body: ListView(
         padding: EdgeInsetsDirectional.all(50.h),
         children: [
-          SizedBox(
-            height: 70.h,
-          ),
+          SizedBox(height: 70.h),
           AppTextWidget(
             content: 'Please enter your phone Number and we will  send you a code to your phone  to rest the password',
             color: Colors.grey,
@@ -123,9 +123,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         currentPassword: _oldPasswordEditingController.text,
         newPassword: _newPasswordConfirmationEditingController.text);
     if (status) {
-      Get.back();
+      navigateToLoginScreen();
     }
   }
 
-  void navigateToLoginScreen() {}
+  void navigateToLoginScreen() {
+    Get.back();
+  }
 }

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/card_getx_controller.dart';
 import 'package:said_store/ui/credit_card/create_credit_card.dart';
 
-import 'package:said_store/ui/widgets/my_card_widget.dart';
+import 'package:said_store/ui/credit_card/my_card_widget.dart';
 
 class DisplayCardScreen extends StatelessWidget {
   CardGetxController controller = Get.put(CardGetxController());
@@ -29,7 +29,7 @@ class DisplayCardScreen extends StatelessWidget {
                 // );
                 return MyCardWidget(
                   expiryDate: controller.cards[index].expDate,
-                  cvvCode: controller.cards[index].cvv.toString(),
+                  // cvvCode: controller.cards[index].cvv,
                   flag: false,
                   cardHolderName: controller.cards[index].holderName,
                   cardNumber: controller.cards[index].cardNumber,

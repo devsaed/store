@@ -25,7 +25,7 @@ class DBProvider {
       onOpen: (Database db) {},
       onCreate: (Database db, int version) async {
         await db.execute('CREATE TABLE cart ('
-            'productId INTEGER,'
+            'product_id INTEGER,'
             'name_en TEXT,'
             'name_ar TEXT,'
             'info_en TEXT,'
@@ -34,9 +34,12 @@ class DBProvider {
             'quantity INTEGER,'
             'image_url TEXT,'
             'is_favorite TEXT,'
-            'product_rate TEXT,'
-            'image_url TEXT,'
+            'product_rate NUMERIC,'
+            'overal_rate NUMERIC,'
+            'sub_category_id TEXT,'
             ')');
+
+
       },
 
       // overalRate = data['overal_rate'];

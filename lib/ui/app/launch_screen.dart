@@ -23,7 +23,9 @@ class _LaunchScreenState extends State<LaunchScreen> {
 
   @override
   void initState() {
-    Widget route = SharedPreferencesController().loggedIn ? MainScreen() : OnBoardingScreen();
+    Widget route = SharedPreferencesController().loggedIn
+        ? MainScreen()
+        : OnBoardingScreen();
     Future.delayed(Duration(seconds: 3), () => Get.off(route));
     super.initState();
   }
@@ -31,7 +33,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.PRIMARY_COLOR,
+      backgroundColor: AppColors.PRIMARY_COLOR,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

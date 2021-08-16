@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:said_store/model/product.dart';
 import 'package:said_store/utils/app_colors.dart';
 
-import 'app_text_widget.dart';
+import '../widgets/app_text_widget.dart';
 
 class ProductWidget extends StatelessWidget {
   final Product product;

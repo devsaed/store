@@ -6,6 +6,7 @@ import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
+import 'package:said_store/utils/helper.dart';
 
 
 class ActivationScreen extends StatefulWidget {
@@ -64,17 +65,35 @@ class _ActivationScreenState extends State<ActivationScreen> {
           SizedBox(
             height: 43,
           ),
-          AppElevatedButton(text: 'Continue', onPressed: ()async {
-            bool status = await UsersGetxController.to.activatedAccount(context, code: _codeEditingController.text, mobile: widget.mobile);
-            if(status){
-              navigateToLoginScreen();
-            }
-          }),
+          AppElevatedButton(text: 'Continue',
+              onPressed: () async => await performActivate()),
         ],
       ),
     );
   }
+
+  Future<void> performActivate() async {
+    if (checkData()) {
+      await activate();
+    }
+  }
+
+  bool checkData() {
+    if (_codeEditingController.text.isNotEmpty) {
+      return true;
+    }
+    Helper.showSnackBar(context, text: 'Enter Required Fields', error: true);
+    return false;
+  }
+
+  Future<void> activate() async {
+    bool status = await UsersGetxController.to.activatedAccount(context, code: _codeEditingController.text, mobile: widget.mobile);
+    if(status){
+      navigateToLoginScreen();
+    }
+  }
+
   void navigateToLoginScreen() {
-    Get.off(LoginScreen());
+    Get.offAll(LoginScreen());
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:said_store/api/controllers/userApiContraller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
-import 'package:said_store/model/Home.dart';
+import 'package:said_store/model/home.dart';
 import 'package:said_store/model/user.dart';
 
 class UsersGetxController extends GetxController {

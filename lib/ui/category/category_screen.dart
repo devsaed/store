@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/categories_getx_controller.dart';
 import 'package:said_store/getx/user_getx_controller.dart';
-import 'package:said_store/ui/auth/cities_screen.dart';
+import 'package:said_store/ui/city/cities_screen.dart';
 import 'package:said_store/ui/auth/forget_password_screen.dart';
 import 'package:said_store/ui/auth/login_screen.dart';
 import 'package:said_store/ui/category/sub_categoey_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
-import 'package:said_store/ui/widgets/category_widget.dart';
+import 'package:said_store/ui/category/category_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 
 class CategoryScreen extends StatelessWidget {

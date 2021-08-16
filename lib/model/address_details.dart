@@ -5,10 +5,10 @@ class AddressDetails {
   late String name;
   late String info;
   late String contactNumber;
-  late double? lat;
-  late double? lang;
   late int cityId;
-  late City? city;
+  double? lat;
+  double? lang;
+  City? city;
 
   AddressDetails();
 

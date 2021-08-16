@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/cities_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/model/city.dart';
-import 'package:said_store/ui/auth/cities_screen.dart';
+import 'package:said_store/ui/city/cities_screen.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';

@@ -61,11 +61,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             label: 'subject',
             isPassword: true,
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 15.h),
           AppTextField(
             controller: _msgEditingController,
             label: 'message',
-            isPassword: true,
+            line: 8,
           ),
 
           SizedBox(

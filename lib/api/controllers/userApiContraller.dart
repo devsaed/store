@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
-import 'package:said_store/model/Home.dart';
+import 'package:said_store/model/home.dart';
 import 'package:said_store/model/product_details.dart';
 import 'package:said_store/model/user.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/categories_getx_controller.dart';
 import 'package:said_store/ui/product/product_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
-import 'package:said_store/ui/widgets/sub_category_widget.dart';
+import 'package:said_store/ui/category/sub_category_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 
 class SubCategoryScreen extends StatefulWidget {

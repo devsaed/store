@@ -7,6 +7,7 @@ import 'package:said_store/model/city.dart';
 class CitiesGetxController extends GetxController {
   final CitiesApiController citiesApiController = CitiesApiController();
   RxList<City> cities = <City>[].obs;
+  RxBool loading = false.obs;
 
   static CitiesGetxController get to => Get.find();
 
@@ -16,7 +17,9 @@ class CitiesGetxController extends GetxController {
   }
 
   Future<void> getCities() async {
+    loading.value = true;
     cities.value = await citiesApiController.getCities();
+    loading.value = false;
     update();
   }
 

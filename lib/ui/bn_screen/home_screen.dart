@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/home_getx_controller.dart';
 import 'package:said_store/getx/user_getx_controller.dart';
-import 'package:said_store/model/Home.dart';
+import 'package:said_store/model/home.dart';
 import 'package:said_store/model/product.dart';
 import 'package:said_store/ui/category/category_screen.dart';
 import 'package:said_store/ui/category/sub_categoey_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
-import 'package:said_store/ui/widgets/category_widget.dart';
-import 'package:said_store/ui/widgets/home_category.dart';
-import 'package:said_store/ui/widgets/home_product.dart';
-import 'package:said_store/ui/widgets/product_widget.dart';
+import 'package:said_store/ui/category/category_widget.dart';
+import 'package:said_store/ui/category/home_category.dart';
+import 'package:said_store/ui/product/home_product.dart';
+import 'package:said_store/ui/product/product_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {

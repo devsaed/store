@@ -26,8 +26,16 @@ class CardGetxController extends GetxController {
   }
 
   Future<bool> createCard({required BuildContext context, required MyCard card}) async {
-    MyCard? newAddress = await cardApiController.createCard(context: context, card: card);
-    if (newAddress != null) {
+    MyCard? newCard = await cardApiController.createCard(context: context,
+      holderName: card.holderName,
+      cardNumber: card.cardNumber,
+      expDate: card.expDate,
+      cvv: card.cvv.toString(),
+      type: card.type);
+    if (newCard != null) {
+      cards.add(newCard);
+      cards.refresh();
+      update();
       return true;
     }
     return false;

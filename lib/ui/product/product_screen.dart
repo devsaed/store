@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
 import 'package:said_store/ui/product/product_details.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
-import 'package:said_store/ui/widgets/product_widget.dart';
+import 'package:said_store/ui/product/product_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 
 class ProductScreen extends StatefulWidget {

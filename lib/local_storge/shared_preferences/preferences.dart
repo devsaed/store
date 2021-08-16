@@ -48,6 +48,7 @@ class SharedPreferencesController {
     user.email = sharedPreferences.getString('email') ?? '';
     user.verified = sharedPreferences.getBool('verified') ?? false;
     user.storeId = sharedPreferences.getInt('storeId') ?? 0;
+    return user;
   }
 
   bool get loggedIn => sharedPreferences.getBool('logged_in') ?? false;

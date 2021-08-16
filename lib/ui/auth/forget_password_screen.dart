@@ -50,9 +50,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             fontSize: 15.sp,
             fontWeight: FontWeight.normal,
           ),
-          SizedBox(
-            height: 60.h,
-          ),
+          SizedBox(height: 60.h),
           AppTextField(
             label: 'mobile number',
             controller: _phoneEditingController,
@@ -64,7 +62,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           AppElevatedButton(text: 'Continue', onPressed: ()async {
             await performForgetPassword();
           }),
-
         ],
       ),
     );
@@ -89,15 +86,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     bool status = await UsersGetxController.to.forgetPassword(context, mobile: _phoneEditingController.text);
     if (status) {
       navigateToResetPassword();
-    } else {
-      Helper.showSnackBar(
-        context,
-        text: 'Login failed, check your credentials!',
-        error: true);
     }
-
   }
-
   void navigateToResetPassword() {
     Get.to(ResetPasswordScreen(phone: _phoneEditingController.text,));
   }

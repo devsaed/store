@@ -1,16 +1,16 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:said_store/model/sub_category.dart';
+import 'package:said_store/model/category.dart';
 import 'package:said_store/utils/app_colors.dart';
 
-import 'app_text_widget.dart';
+import '../widgets/app_text_widget.dart';
 
-class SubCategoryWidget extends StatelessWidget {
-  final SubCategory subCategory;
+class CategoryWidget extends StatelessWidget {
+  final Category category;
   final void Function() onTap;
 
-  SubCategoryWidget({required this.subCategory, required this.onTap});
+  CategoryWidget({required this.category, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class SubCategoryWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 height: 172,
                 width: double.infinity,
-                imageUrl: subCategory.imageUrl,
+                imageUrl: category.imageUrl,
                 placeholder: (context, url) => Center(
                   child: CircularProgressIndicator(
                     color: AppColors.PRIMARY_COLOR,
@@ -42,7 +42,7 @@ class SubCategoryWidget extends StatelessWidget {
               height: 10,
             ),
             AppTextWidget(
-              content: subCategory.nameEn,
+              content: category.nameEn,
               fontSize: 15,
               color: AppColors.PRIMARY_TEXT_COLOR,
               fontWeight: FontWeight.w600,

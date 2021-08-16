@@ -98,8 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
               replacement: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 117.w, vertical: 45.h),
+                padding: EdgeInsets.symmetric(horizontal: 117.w, vertical: 45.h),
                 child: AppElevatedButton(
                   onPressed: () => Get.off(LoginScreen()),
                   text: 'Get started',

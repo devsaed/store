@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/api/controllers/address_api_controller.dart';
-
-import 'package:said_store/api/controllers/product_api_controller.dart';
-import 'package:said_store/model/address.dart';
 import 'package:said_store/model/address_details.dart';
-import 'package:said_store/model/product.dart';
-import 'package:said_store/model/product_details.dart';
 
 class AddressGetxController extends GetxController {
   final AddressApiController addressApiController = AddressApiController();
@@ -41,8 +36,8 @@ class AddressGetxController extends GetxController {
     loading.value = false;
   }
 
-  Future<void> updateAddress({required BuildContext context, required Address address}) async {
-    bool isUpdated = await addressApiController.updateTask(address: address, context: context);
+  Future<bool> updateAddress({required BuildContext context, required AddressDetails address}) async {
+    bool isUpdated = await addressApiController.updateAddress(address: address, context: context);
     if (isUpdated) {
       int index = addresses.indexWhere((element) => element.id == address.id);
       addresses[index].name = address.name;
@@ -51,13 +46,15 @@ class AddressGetxController extends GetxController {
       addresses[index].lang = address.lang;
       addresses[index].lat = address.lat;
       addresses[index].cityId = address.cityId;
+      addresses.refresh();
+      update();
+      return isUpdated;
     }
-    addresses.refresh();
-    update();
+    return false;
   }
 
-  Future<bool> createAddress({required BuildContext context, required Address address}) async {
-    Address? newAddress = await addressApiController.createAddress(context: context, address: address);
+  Future<bool> createAddress({required BuildContext context, required AddressDetails address}) async {
+    AddressDetails? newAddress = await addressApiController.createAddress(context: context, address: address);
     if (newAddress != null) {
       AddressDetails addressDetails = AddressDetails();
       addressDetails.name = address.name;

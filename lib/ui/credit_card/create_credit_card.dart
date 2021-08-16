@@ -6,7 +6,7 @@ import 'package:said_store/model/card.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/widgets/card_text_field.dart';
-import 'package:said_store/ui/widgets/my_card_widget.dart';
+import 'package:said_store/ui/credit_card/my_card_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 import 'package:said_store/utils/helper.dart';
 
@@ -84,8 +84,9 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                         await pickDate();
                         setState(() {
                           if(_pickedDate != null){
-                            List<String> list = _pickedDate!.split('/');
-                            expiryDate = list[0] + ' / '+  list[2][2]+list[2][3];
+                            List<String> list = _pickedDate!.split('-');
+                            // expiryDate = expiryDate;
+                            expiryDate =  list[1]+ '/' + list[0][2]+list[0][3];
                           }
                         });
                       },
@@ -215,17 +216,11 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
     );
     if (dateTime != null) {
       _pickedDateValue = dateTime;
-      var format = DateFormat.yMd();
+      var format = DateFormat('yyyy-MM-dd');
       _pickedDate = format.format(dateTime);
       print('Date: ${_pickedDate}');
     }
   }
-
-
-  // String? cardNumber;
-  // String? expiryDate;
-  // String? cardHolderName;
-  // String? cvvCode;
 
   Future performSave(BuildContext context) async {
     if (checkData()) {
@@ -246,13 +241,18 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
   }
 
   Future save(BuildContext context) async {
-    await CardGetxController.to.createCard(card: card,context: context);
+    bool status = await CardGetxController.to.createCard(card: card,context: context);
+    if (status) {
+      Navigator.pop(context);
+    } else {
+      Helper.showSnackBar(context, text: 'error', error: true);
+    }
   }
 
   MyCard get card {
     MyCard myCard = MyCard();
     myCard.cardNumber = numberEditingController.text;
-    myCard.cvv = int.parse(cvvEditingController.text);
+    myCard.cvv = cvvEditingController.text;
     myCard.holderName = holderNameEditingController.text;
     myCard.expDate = _pickedDate!;
     myCard.type = isVisa ? 'Visa' : 'Master';

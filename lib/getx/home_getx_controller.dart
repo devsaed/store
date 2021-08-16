@@ -1,7 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:said_store/api/controllers/userApiContraller.dart';
-import 'package:said_store/model/Home.dart';
+import 'package:said_store/model/home.dart';
 
 class HomeGetxController extends GetxController {
   Home? home;

@@ -4,12 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/address_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
-import 'package:said_store/model/address.dart';
-import 'package:said_store/ui/app/main_screen.dart';
-import 'package:said_store/ui/auth/forget_password_screen.dart';
-import 'package:said_store/ui/auth/register_screen.dart';
-import 'package:said_store/ui/category/category_screen.dart';
-import 'package:said_store/getx/user_getx_controller.dart';
+import 'package:said_store/model/address_details.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
@@ -21,11 +16,6 @@ class AddAddressScreen extends StatefulWidget {
   @override
   _AddAddressScreenState createState() => _AddAddressScreenState();
 }
-
-// late String name;
-// late String info;
-// late String contactNumber;
-// late int cityId;
 
 class _AddAddressScreenState extends State<AddAddressScreen> {
   late TextEditingController nameEditingController;
@@ -65,7 +55,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
         padding: EdgeInsets.all(32.h),
         children: [
           SizedBox(height: 30.h),
-
           AppTextField(
             controller: contactNumberEditingController,
             label: 'Phone Number',
@@ -80,7 +69,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           SizedBox(height: 15.h),
           AppTextField(
             controller: infoEditingController,
-            label: 'info',
+            label: 'info : Country, City, Street',
           ),
           SizedBox(height: 42.h),
           AppElevatedButton(
@@ -117,11 +106,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   }
 
   Future<void> save() async {
-    Address address = Address();
+    AddressDetails address = AddressDetails();
     address.name = nameEditingController.text;
     address.contactNumber = contactNumberEditingController.text;
     address.info = infoEditingController.text;
-    address.cityId = 5;
+    address.cityId = SharedPreferencesController().user!.cityId;
 
     bool status = await AddressGetxController.to.createAddress(
       context: context,

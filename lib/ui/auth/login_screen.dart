@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:said_store/ui/app/main_screen.dart';
 import 'package:said_store/ui/auth/forget_password_screen.dart';
 import 'package:said_store/ui/auth/register_screen.dart';
-import 'package:said_store/ui/category/category_screen.dart';
 import 'package:said_store/getx/user_getx_controller.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
@@ -70,21 +69,21 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: phoneEditingController,
             label: 'Phone Number',
             prefix: AppTextWidget(content: '0'),
-            suffix: Icon(Icons.phone_android_outlined),
+            suffix: Icon(Icons.phone_android_outlined,color: AppColors.PRIMARY_COLOR),
             textInputType: TextInputType.phone,
           ),
           SizedBox(height: 20.h),
           AppTextField(
             controller: passwordEditingController,
             label: 'Password',
-            suffix: Icon(Icons.lock),
+            suffix: Icon(Icons.lock,color: AppColors.PRIMARY_COLOR),
             isPassword: true,
           ),
           SizedBox(height: 15.h),
           GestureDetector(
             child: Container(
-              child: AppTextWidget(content: 'Forgot password?'),
               alignment: AlignmentDirectional.centerEnd,
+              child: AppTextWidget(content: 'Forgot password?'),
             ),
             onTap: () => Get.to(ForgetPassword()),
           ),
@@ -97,9 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
               await performLogin();
             },
           ),
-          SizedBox(
-            height: 170.h,
-          ),
+          SizedBox(height: 170.h),
           Container(
             child: RichText(
               text: TextSpan(
@@ -152,8 +149,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     if (status) {
       Get.off(MainScreen());
-    } else {
-      Helper.showSnackBar(context, text: 'Login failed, check your credentials!', error: true);
     }
   }
 }

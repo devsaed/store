@@ -8,6 +8,7 @@ import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/widgets/code_text_field.dart';
 import 'package:said_store/utils/app_colors.dart';
 import 'package:said_store/utils/helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   final String phone;
@@ -78,20 +79,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         title: AppTextWidget(
           content: 'Reset Password',
           color: AppColors.PRIMARY_TEXT_COLOR,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
       ),
       body: ListView(
-        padding: EdgeInsetsDirectional.all(50),
+        padding: EdgeInsetsDirectional.all(50.h),
         shrinkWrap: true,
         children: [
-          SizedBox(height: 70),
+          SizedBox(height: 70.h),
           AppTextWidget(
-            content:
-                'Enter 4 digit code verification, the code sent to your phone',
+            content: 'Enter 4 digit code verification, the code sent to your phone',
             color: Colors.grey,
-            fontFamily: 'sf',
-            fontSize: 15,
+            fontSize: 15.sp,
             fontWeight: FontWeight.normal,
           ),
           SizedBox(
@@ -106,7 +105,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     if (value.isNotEmpty) secondFocusNode.requestFocus();
                   },
                 ),
-                SizedBox(width: 15),
+                SizedBox(width: 15.w),
                 CodeTextField(
                   textController: _secondCodeTextController,
                   focusNode: secondFocusNode,
@@ -117,7 +116,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       thirdFocusNode.requestFocus();
                   },
                 ),
-                SizedBox(width: 15),
+                SizedBox(width: 15.w),
                 CodeTextField(
                   textController: _thirdCodeTextController,
                   focusNode: thirdFocusNode,
@@ -128,7 +127,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       fourthFocusNode.requestFocus();
                   },
                 ),
-                SizedBox(width: 15),
+                SizedBox(width: 15.w),
                 CodeTextField(
                   textController: _fourthCodeTextController,
                   focusNode: fourthFocusNode,
@@ -139,19 +138,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 20.h),
           AppTextField(
             controller: _newPasswordEditingController,
             label: 'Password',
             isPassword: true,
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 15.h),
           AppTextField(
             controller: _newPasswordConfirmationEditingController,
             label: 'Confirm Password',
             isPassword: true,
           ),
-          SizedBox(height: 43),
+          SizedBox(height: 43.h),
           AppElevatedButton(
             text: 'Continue',
             onPressed: () async => await performResetPassword(),
@@ -172,8 +171,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       if (isPasswordConfirmed) {
         return true;
       }
-      Helper.showSnackBar(context,
-          text: 'Password is not confirmed correctly!', error: true);
+      Helper.showSnackBar(context, text: 'Password is not confirmed correctly!', error: true);
     } else {
       Helper.showSnackBar(context, text: 'Enter required data!', error: true);
     }
@@ -212,6 +210,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   void navigateToLoginScreen() {
-    Get.to(LoginScreen());
+    Get.offAll(LoginScreen());
   }
 }
