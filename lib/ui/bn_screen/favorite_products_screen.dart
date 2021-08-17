@@ -11,13 +11,6 @@ class FavoriteProductsScreen extends StatefulWidget {
 }
 
 class _FavoriteProductsScreenState extends State<FavoriteProductsScreen> {
-  @override
-  void initState() {
-    Future.delayed(Duration.zero, () async {
-      await ProductGetxController.to.getFavoriteProducts();
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +34,7 @@ class _FavoriteProductsScreenState extends State<FavoriteProductsScreen> {
                       return FavoriteProductWidget(
                           product: controller.favoriteProducts[index],
                           onTap: () => Get.to(ProductDetailsScreen(
-                              productID: controller.favoriteProducts[index].id)));
+                              productDetails: controller.favoriteProducts[index])));
                     },
                   )
                 : Center(child: Text('no data'));

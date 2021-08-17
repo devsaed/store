@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
+
 import 'package:said_store/model/sub_category.dart';
 
 class ProductDetails{
@@ -8,11 +7,11 @@ class ProductDetails{
   late String nameAr;
   late String infoEn;
   late String infoAr;
-  late int price;
+  late double price;
   late int quantity;
-  late int? overalRate;
+  late double? overalRate;
   late int subCategoryId;
-  late int productRate;
+  late double productRate;
   late double? offerPrice;
   late bool isFavorite;
   late String imageUrl;
@@ -27,11 +26,11 @@ class ProductDetails{
     nameAr = json['name_ar'];
     infoEn = json['info_en'];
     infoAr = json['info_ar'];
-    price = json['price'];
+    price = double.parse(json['price'].toString());
     quantity = json['quantity'];
-    overalRate = json['overal_rate'];
+    overalRate = double.parse(json['overal_rate'].toString());
     subCategoryId = json['sub_category_id'];
-    productRate = json['product_rate'];
+    productRate = double.parse(json['product_rate'].toString());
     offerPrice = json['offer_price'];
     isFavorite = json['is_favorite'];
     imageUrl = json['image_url'];

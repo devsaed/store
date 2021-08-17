@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:said_store/local_storge/db/db_provider.dart';
 import 'package:said_store/utils/app_colors.dart';
 
 import 'local_storge/shared_preferences/preferences.dart';
@@ -10,6 +11,7 @@ import 'locale/app_locale.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesController().initSharedPreference();
+  await DBProvider().initDatabase();
   runApp(MyApp());
 }
 

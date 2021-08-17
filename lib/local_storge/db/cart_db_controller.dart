@@ -1,51 +1,40 @@
-//
-// import 'package:said_store/model/product.dart';
-// import 'package:sqflite/sqflite.dart';
-//
-// import 'db_operations.dart';
-// import 'db_provider.dart';
-//
-// class CartDbController extends DbOperations<Product> {
-//   Database _database;
-//
-//   CartDbController() : _database = DBProvider().database;
-//
-//
-//   @override
-//   Future<int> create(Product data) {
-//     return _database.insert('cart', data.toMap());
-//   }
-//
-//   @override
-//   Future<List<UserAction>> read() async {
-//     List<Map<String, dynamic>> data = await _database.query('actions',
-//         where: 'user_id = ?', whereArgs: [UsersGetxController.to.user.id]);
-//     if (data.isNotEmpty) {
-//       return data.map((rowMap) => UserAction.fromMap(rowMap)).toList();
-//     }
-//     return [];
-//   }
-//
-//   @override
-//   Future<bool> update(UserAction data) {
-//     // TODO: implement update
-//     throw UnimplementedError();
-//   }
-//
-//   @override
-//   Future<bool> delete(int id) {
-//     // TODO: implement delete
-//     throw UnimplementedError();
-//   }
-//
-//   @override
-//   Future<UserAction?> show(int id) {
-//     // TODO: implement show
-//     throw UnimplementedError();
-//   }
-//
-//   Future<bool> deleteUserActions(int userId) async{
-//     int deleteRowsCount = await _database.delete('actions',where: 'user_id = ?',whereArgs: [userId]);
-//     return deleteRowsCount > 0;
-//   }
-// }
+
+import 'package:said_store/model/cart_item.dart';
+import 'package:sqflite/sqflite.dart';
+
+import 'db_operations.dart';
+import 'db_provider.dart';
+
+class CartDbController extends DbOperations<CartItem> {
+  Database _database;
+  CartDbController() : _database = DBProvider().database;
+
+  @override
+  Future<int> create(CartItem cartItem) async {
+    return await _database.insert('cart', cartItem.toMap());
+  }
+
+  @override
+  Future<bool> delete(int id) async{
+    int countOfDeletedRows = await _database.delete('cart', where: 'id = ?', whereArgs: [id]);
+    return countOfDeletedRows != 0;
+  }
+
+  @override
+  Future<List<CartItem>> read() async{
+    var rowsMaps = await _database.query('cart');
+    return rowsMaps.map((rowMap) => CartItem.fromMap(rowMap)).toList();
+  }
+
+  @override
+  Future<CartItem?> show(int id) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> update(CartItem data) {
+    throw UnimplementedError();
+  }
+
+
+}

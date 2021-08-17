@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:said_store/getx/cart_getx_controller.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/ui/app/main_screen.dart';
@@ -20,6 +21,7 @@ class LaunchScreen extends StatefulWidget {
 class _LaunchScreenState extends State<LaunchScreen> {
   UsersGetxController usersController = Get.put(UsersGetxController());
   ProductGetxController controller = Get.put(ProductGetxController());
+  CartGetxController cartGetxController = Get.put(CartGetxController());
 
   @override
   void initState() {

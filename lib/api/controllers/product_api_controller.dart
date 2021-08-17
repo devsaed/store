@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:said_store/api/helper/api_mixin.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/model/category.dart';
-import 'package:said_store/model/product.dart';
 import 'package:said_store/model/product_details.dart';
 import 'package:said_store/model/sub_category.dart';
 import '../api_settings.dart';
@@ -13,11 +12,11 @@ import 'package:http/http.dart' as http;
 
 class ProductApiController with ApiMixin {
 
-  Future<List<Product>> getProduct({required int id}) async {
+  Future<List<ProductDetails>> getProduct({required int id}) async {
     var response = await http.get(getUrl(ApiSettings.PRODUCT+'/$id'),headers: header);
     if (isSuccessRequest(response.statusCode)) {
       var data = jsonDecode(response.body)['list'] as List;
-      List<Product> products = data.map((e) => Product.fromJson(e)).toList();
+      List<ProductDetails> products = data.map((e) => ProductDetails.fromJson(e)).toList();
       return products;
     }
     return [];
@@ -48,7 +47,6 @@ class ProductApiController with ApiMixin {
           'lang': SharedPreferencesController().languageCode,
         });
     if (isSuccessRequest(response.statusCode)) {
-      print('--------------sucsess------------------');
       var data = jsonDecode(response.body)['object'];
       var productDetails = ProductDetails.fromJson(data);
       return productDetails;

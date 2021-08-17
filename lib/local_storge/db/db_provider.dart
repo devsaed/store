@@ -25,29 +25,15 @@ class DBProvider {
       onOpen: (Database db) {},
       onCreate: (Database db, int version) async {
         await db.execute('CREATE TABLE cart ('
+            'id INTEGER PRIMARY KEY AUTOINCREMENT,'
             'product_id INTEGER,'
             'name_en TEXT,'
             'name_ar TEXT,'
-            'info_en TEXT,'
-            'info_ar TEXT,'
-            'price INTEGER,'
             'quantity INTEGER,'
-            'image_url TEXT,'
-            'is_favorite TEXT,'
-            'product_rate NUMERIC,'
-            'overal_rate NUMERIC,'
-            'sub_category_id TEXT,'
+            'image TEXT,'
+            'price NUMERIC'
             ')');
-
-
       },
-
-      // overalRate = data['overal_rate'];
-        // subCategoryId = data['sub_category_id'];
-        // productRate = data['product_rate'];
-        // offerPrice = data['offer_price'];
-        // isFavorite = data['is_favorite'];
-
       onUpgrade: (Database db, int oldVersion, int newVersion) {},
       onDowngrade: (Database db, int oldVersion, int newVersion) {},
     );

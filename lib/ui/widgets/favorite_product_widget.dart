@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:said_store/model/product.dart';
 import 'package:said_store/model/product_details.dart';
 import 'package:said_store/utils/app_colors.dart';
 

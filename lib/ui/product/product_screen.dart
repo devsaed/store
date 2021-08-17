@@ -60,7 +60,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   product: controller.products[index],
                   onTap: () => Get.to(
                     ProductDetailsScreen(
-                        productID: controller.products[index].id),
+                        productDetails: controller.products[index]),
                   ),
                 );
               },
