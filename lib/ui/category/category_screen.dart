@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/categories_getx_controller.dart';
-import 'package:said_store/getx/user_getx_controller.dart';
-import 'package:said_store/ui/city/cities_screen.dart';
-import 'package:said_store/ui/auth/forget_password_screen.dart';
-import 'package:said_store/ui/auth/login_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:said_store/ui/category/sub_categoey_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/category/category_widget.dart';
@@ -21,7 +18,7 @@ class CategoryScreen extends StatelessWidget {
         title: AppTextWidget(
           content: 'Category',
           color: AppColors.PRIMARY_TEXT_COLOR,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
       ),
       body: Container(
@@ -31,7 +28,7 @@ class CategoryScreen extends StatelessWidget {
                 ? Center(child: CircularProgressIndicator())
                 : controller.categories.isNotEmpty
                     ? Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 10.h),
                         child: GridView.builder(
                           scrollDirection: Axis.vertical,
                           itemCount: controller.categories.length,
@@ -39,9 +36,9 @@ class CategoryScreen extends StatelessWidget {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            crossAxisSpacing: 25,
-                            childAspectRatio: 146 / 215,
-                            mainAxisSpacing: 40,
+                            crossAxisSpacing: 25.h,
+                            childAspectRatio: 146.w / 215.h,
+                            mainAxisSpacing: 40.w,
                           ),
                           itemBuilder: (context, index) {
                             return CategoryWidget(
@@ -52,7 +49,7 @@ class CategoryScreen extends StatelessWidget {
                           },
                         ),
                       )
-                    : Center(child: Text('no data'));
+                    : Center(child: Text('No Data'));
           },
         ),
       ),

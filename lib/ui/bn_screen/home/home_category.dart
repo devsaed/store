@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:said_store/model/home.dart';
 import 'package:said_store/utils/app_colors.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/app_text_widget.dart';
 
 class HomeCategoryWidget extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 165,
+      width: 165.w,
       child: GestureDetector(
         onTap: onTap,
         child: Card(
@@ -26,9 +26,9 @@ class HomeCategoryWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(8.h),
                 child: CachedNetworkImage(
-                  height: 172,
+                  height: 172.h,
                   width: double.infinity,
                   imageUrl: category.imageUrl,
                   placeholder: (context, url) => Center(
@@ -41,15 +41,14 @@ class HomeCategoryWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               AppTextWidget(
                 content: category.nameEn,
-                fontSize: 15,
+                fontSize: 15.sp,
                 color: AppColors.PRIMARY_TEXT_COLOR,
                 fontWeight: FontWeight.w600,
               ),
-
             ],
           ),
         ),

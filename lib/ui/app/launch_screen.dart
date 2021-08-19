@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/cart_getx_controller.dart';
+import 'package:said_store/getx/cities_getx_controller.dart';
 import 'package:said_store/getx/order_getx_controller.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
@@ -24,6 +25,8 @@ class _LaunchScreenState extends State<LaunchScreen> {
   ProductGetxController controller = Get.put(ProductGetxController());
   CartGetxController cartGetxController = Get.put(CartGetxController());
   OrderGetxController orderGetxController = Get.put(OrderGetxController());
+  CitiesGetxController citiesGetxController = Get.put(CitiesGetxController());
+
 
   @override
   void initState() {

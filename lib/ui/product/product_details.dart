@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/cart_getx_controller.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
@@ -55,15 +56,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           reverse: false,
                           autoPlay: true,
                           autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration: Duration(milliseconds: 800),
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
                           scrollDirection: Axis.horizontal,
                         ),
-                        items: ProductGetxController.to.productDetails.value!.images.map((ProductImages image) {
+                        items: ProductGetxController
+                            .to.productDetails.value!.images
+                            .map((ProductImages image) {
                           return Builder(
                             builder: (BuildContext context) {
                               return CachedNetworkImage(
-                                height: 400,
+                                height: 400.h,
                                 width: double.infinity,
                                 imageUrl: image.imageUrl,
                                 placeholder: (context, url) => Center(
@@ -93,7 +97,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 24.w, vertical: 40.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -102,20 +107,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   AppTextWidget(
-                                    content: ProductGetxController.to.productDetails.value!.nameEn,
+                                    content: ProductGetxController
+                                        .to.productDetails.value!.nameEn,
                                     color: Colors.black,
                                     fontSize: 26.sp,
                                     fontWeight: FontWeight.w600,
                                   ),
                                   GestureDetector(
                                     onTap: () async {
-                                      await ProductGetxController.to.addFavoriteProducts(
-                                          context: context,
-                                          product: ProductGetxController.to.productDetails.value!);
+                                      await ProductGetxController.to
+                                          .addFavoriteProducts(
+                                              context: context,
+                                              product: ProductGetxController
+                                                  .to.productDetails.value!);
                                     },
                                     child: Container(
-                                      height: 52,
-                                      width: 52,
+                                      height: 52.h,
+                                      width: 52.w,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: ProductGetxController
@@ -133,52 +141,85 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                 ],
                               ),
-                              ProductGetxController.to.productDetails.value!.offerPrice != null
-                                  ? AppTextWidget(
-                                      content: 'Price : ${ProductGetxController.to.productDetails.value!.price} \$  + ${ProductGetxController.to.productDetails.value!.offerPrice}',
-                                      color: Colors.black,
-                                      fontSize: 21.sp,
-                                      fontWeight: FontWeight.w600,
-                                      textAlign: TextAlign.start,
-                                    )
+                              ProductGetxController.to.productDetails.value!
+                                          .offerPrice !=
+                                      null?
+                                  Row(
+                                    children: [
+                                      AppTextWidget(
+                                        content: 'Offer :',
+                                        color: Colors.black,
+                                        fontSize: 21.sp,
+                                        fontWeight: FontWeight.w600,
+                                        textAlign: TextAlign.start,
+                                      ),
+                                      AppTextWidget(
+                                            content: '${ProductGetxController.to.productDetails.value!.price}₪',
+                                            color: Colors.black,
+                                            fontSize: 21.sp,
+                                            fontWeight: FontWeight.w600,
+                                            textAlign: TextAlign.start,
+                                            textDecoration:
+                                                TextDecoration.lineThrough,
+                                            decorationColor: Colors.red,
+                                          ),
+                                      AppTextWidget(
+                                        content: '   ${ProductGetxController.to.productDetails.value!.offerPrice}₪',
+                                        color: Colors.black,
+                                        fontSize: 21.sp,
+                                        fontWeight: FontWeight.w600,
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ],
+                                  )
+
                                   : AppTextWidget(
-                                      content: 'Price : ${ProductGetxController.to.productDetails.value!.price} \$',
+                                      content:
+                                          'Price : ${ProductGetxController.to.productDetails.value!.price} \₪',
                                       color: Colors.black,
                                       fontSize: 21.sp,
                                       fontWeight: FontWeight.w600,
                                       textAlign: TextAlign.start,
                                     ),
-                              SizedBox(height: 8),
-                              SizedBox(height: 8),
+                              SizedBox(height: 8.h),
                               AppTextWidget(
-                                content: ProductGetxController.to.productDetails.value!.infoEn,
+                                content: ProductGetxController
+                                    .to.productDetails.value!.infoEn,
                                 color: Colors.grey,
                                 fontSize: 16.sp,
                                 textAlign: TextAlign.start,
                               ),
-                              // RatingBar.builder(
-                              //   initialRating: double.parse(
-                              //       ProductGetxController
-                              //           .to.productDetails.value!.productRate
-                              //           .toString()),
-                              //   minRating: 1,
-                              //   direction: Axis.horizontal,
-                              //   allowHalfRating: true,
-                              //   itemCount: 5,
-                              //   itemPadding:
-                              //       EdgeInsets.symmetric(horizontal: 4.0),
-                              //   itemSize: 50,
-                              //   itemBuilder: (context, _) => Icon(
-                              //     Icons.star,
-                              //     color: Colors.amber,
-                              //   ),
-                              //   onRatingUpdate: (rating) {
-                              //     ProductGetxController.to.rattingProduct(
-                              //         product: widget.product,
-                              //         context: context,
-                              //         rate: rating);
-                              //   },
-                              // ),
+
+                              SizedBox(height: 40.h,),
+                              AppTextWidget(
+                                content: 'Ratting Product',
+                                color: Colors.grey,
+                                fontSize: 16.sp,
+                                textAlign: TextAlign.start,
+                              ),
+                              SizedBox(height: 10.h,),
+                              RatingBar.builder(
+                                initialRating: double.parse(
+                                    ProductGetxController
+                                        .to.productDetails.value!.productRate
+                                        .toString()),
+                                minRating: 1,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemSize: 35.h,
+                                itemBuilder: (context, _) => Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (rating) {
+                                  ProductGetxController.to.rattingProduct(
+                                      product: ProductGetxController
+                                          .to.productDetails.value!,
+                                      context: context,
+                                      rate: rating);
+                                },
+                              ),
                               Spacer(),
                               AppElevatedButton(
                                 onPressed: () => showCartDialog(),
@@ -200,7 +241,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (BuildContext context) => StatefulBuilder(builder: (context, setState) {
+      builder: (BuildContext context) =>
+          StatefulBuilder(builder: (context, setState) {
         return Dialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
@@ -291,7 +333,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             height: 10,
                           ),
                           AppTextWidget(
-                              content: 'Total Price: ${widget.productDetails.price * cardIncrement}'),
+                              content:
+                                  'Total Price: ${widget.productDetails.price * cardIncrement}'),
                         ],
                       ),
                     ],
@@ -304,12 +347,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         child: AppElevatedButton(
-                          onPressed: () async{
-                            bool status = await CartGetxController.to.createCartItem(cartItem);
-                            if(status){
+                          onPressed: () async {
+                            bool status = await CartGetxController.to
+                                .createCartItem(cartItem);
+                            if (status) {
                               Helper.showSnackBar(context, text: 'add suc');
                               cardIncrement = 1;
-                            }else{
+                            } else {
                               Helper.showSnackBar(context, text: 'add fal');
                               cardIncrement = 1;
                             }
@@ -323,7 +367,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       child: Padding(
                         padding: EdgeInsets.all(15),
                         child: AppElevatedButton(
-                          onPressed: (){
+                          onPressed: () {
                             cardIncrement = 1;
                             Get.back();
                           },

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/address_getx_controller.dart';
 import 'package:said_store/model/address_details.dart';
 import 'package:said_store/ui/address/add_address_screen.dart';
-import 'package:said_store/ui/address/address_edite_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:said_store/ui/address/address_widget.dart';
 
 class AddressScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class AddressScreen extends StatelessWidget {
               : controller.addresses.isNotEmpty
                   ? Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+                          EdgeInsets.symmetric(horizontal: 29.w, vertical: 10.h),
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: controller.addresses.length,

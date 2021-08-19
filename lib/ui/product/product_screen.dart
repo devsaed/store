@@ -6,6 +6,7 @@ import 'package:said_store/ui/product/product_details.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/product/product_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductScreen extends StatefulWidget {
   final int id;
@@ -35,11 +36,11 @@ class _ProductScreenState extends State<ProductScreen> {
         title: AppTextWidget(
           content: 'Products',
           color: AppColors.PRIMARY_TEXT_COLOR,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         child: GetX<ProductGetxController>(
           builder: (ProductGetxController controller) {
             return controller.loading.value
@@ -51,9 +52,9 @@ class _ProductScreenState extends State<ProductScreen> {
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 5,
-                childAspectRatio: 146 / 230,
-                mainAxisSpacing: 20,
+                crossAxisSpacing: 5.h,
+                childAspectRatio: 146.w / 250.h,
+                mainAxisSpacing: 20.w,
               ),
               itemBuilder: (context, index) {
                 return ProductWidget(
@@ -64,7 +65,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 );
               },
-            ):Center(child: Text('no data'));
+            ):Center(child: Text('No Data'));
           },
         ),
       ),

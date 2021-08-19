@@ -60,7 +60,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
             SizedBox(height: 30.h),
             Padding(
               child: AppTextWidget(content: 'Phone Number',color: Colors.grey,),
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10.h),
             ),
             AppTextField(
               controller: contactNumberEditingController,
@@ -71,7 +71,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
             SizedBox(height: 20.h),
             Padding(
               child: AppTextWidget(content: 'Name',color: Colors.grey,),
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10.h),
             ),
             AppTextField(
               controller: nameEditingController,
@@ -80,7 +80,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
             SizedBox(height: 15.h),
             Padding(
               child: AppTextWidget(content: 'Info',color: Colors.grey,),
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10.h),
             ),
             AppTextField(
               controller: infoEditingController,

@@ -94,7 +94,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             fontWeight: FontWeight.normal,
           ),
           SizedBox(
-            height: 100,
+            height: 100.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

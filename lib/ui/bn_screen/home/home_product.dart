@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:said_store/model/product_details.dart';
 import 'package:said_store/utils/app_colors.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/app_text_widget.dart';
 
 class HomeProductWidget extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 165,
+      width: 165.w,
       child: GestureDetector(
         onTap: onTap,
         child: Card(
@@ -26,7 +26,7 @@ class HomeProductWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CachedNetworkImage(
-                height: 190,
+                height: 180.h,
                 width: double.infinity,
                 imageUrl: product.imageUrl,
                 placeholder: (context, url) => Center(
@@ -38,10 +38,10 @@ class HomeProductWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -50,19 +50,19 @@ class HomeProductWidget extends StatelessWidget {
                       children: [
                         AppTextWidget(
                           content: product.nameEn,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: AppColors.PRIMARY_TEXT_COLOR,
                         ),
                         product.offerPrice == null
                             ? AppTextWidget(
                           content: '${product.price}\₪',
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: AppColors.PRIMARY_TEXT_COLOR,
                           fontWeight: FontWeight.bold,
                         )
                             : AppTextWidget(
                           content: '${product.price}\₪',
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           color: AppColors.PRIMARY_TEXT_COLOR,
                           fontWeight: FontWeight.bold,
                           textDecoration: TextDecoration.lineThrough,
@@ -71,35 +71,35 @@ class HomeProductWidget extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 3,
+                      height: 3.h,
                     ),
                     product.offerPrice != null
                         ? AppTextWidget(
                       content: 'Offer: ${product.offerPrice}\₪',
                       color: AppColors.PRIMARY_TEXT_COLOR,
-                      fontSize: 13,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'sf',
                     )
                         : Container(),
                     SizedBox(
-                      height: 12,
+                      height: 12.h,
                     ),
                     AppTextWidget(
                       content: '${product.quantity} product available',
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       color: Colors.grey,
                     ),
                     SizedBox(
-                      height: 5,
+                      height: 5.h,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.star,color: Colors.amber,size: 15,),
-                        SizedBox(width: 5,),
+                        Icon(Icons.star,color: Colors.amber,size: 15.sp,),
+                        SizedBox(width: 5.w,),
                         AppTextWidget(
                           content: '(${product.overalRate})',
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Colors.grey,
                         ),
                       ],

@@ -52,7 +52,7 @@ class _OrderScreenState extends State<OrderScreen> {
               });
             },
             child: Container(
-              padding: EdgeInsetsDirectional.only(start: 28.w, end: 10),
+              padding: EdgeInsetsDirectional.only(start: 28.w, end: 10.w),
               alignment: AlignmentDirectional.centerStart,
               height: 50.h,
               width: double.infinity,
@@ -89,7 +89,7 @@ class _OrderScreenState extends State<OrderScreen> {
               });
             },
             child: Container(
-                padding: EdgeInsetsDirectional.only(start: 28.w, end: 10),
+                padding: EdgeInsetsDirectional.only(start: 28.w, end: 10.w),
                 alignment: AlignmentDirectional.centerStart,
                 height: 50.h,
                 width: double.infinity,
@@ -131,15 +131,15 @@ class _OrderScreenState extends State<OrderScreen> {
                   },
                   title: AppTextWidget(
                     content: 'Online',
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: AppColors.PRIMARY_TEXT_COLOR,
                   ),
                 ),
               ),
               VerticalDivider(
                 color: Colors.red,
-                width: 50,
-                thickness: 5,
+                width: 50.w,
+                thickness: 5.h,
               ),
               Expanded(
                 child: CheckboxListTile(
@@ -153,14 +153,14 @@ class _OrderScreenState extends State<OrderScreen> {
                   },
                   title: AppTextWidget(
                     content: 'Offline',
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: AppColors.PRIMARY_TEXT_COLOR,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 42),
+          SizedBox(height: 42.h),
           AppElevatedButton(
             text: 'Confirm Order',
             onPressed: () async => await performOrder(),
@@ -180,7 +180,7 @@ class _OrderScreenState extends State<OrderScreen> {
       return AppTextWidget(
         content: card!.cardNumber,
         color: AppColors.PRIMARY_TEXT_COLOR,
-        fontSize: 16,
+        fontSize: 16.sp,
       );
     }
   }
@@ -195,7 +195,7 @@ class _OrderScreenState extends State<OrderScreen> {
       return AppTextWidget(
         content: address!.info,
         color: AppColors.PRIMARY_TEXT_COLOR,
-        fontSize: 16,
+        fontSize: 16.sp,
       );
     }
   }

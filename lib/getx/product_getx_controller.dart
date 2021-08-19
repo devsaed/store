@@ -61,11 +61,7 @@ class ProductGetxController extends GetxController {
   }
 
   Future<void> rattingProduct({required ProductDetails product,required BuildContext context,required double rate}) async {
-    bool status = await productApiController.productRate(context, id: product.id,ratting: rate);
-    if(status){
-      int index = products.indexWhere((element) => element.id == product.id);
-      products[index].productRate = rate;
-    }
+    await productApiController.productRate(context, id: product.id,ratting: rate);
     productDetails.refresh();
     products.refresh();
     favoriteProducts.refresh();

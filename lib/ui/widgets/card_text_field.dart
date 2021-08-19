@@ -90,8 +90,8 @@ class CardTextField extends StatelessWidget {
     return prefix != null
         ? Padding(
             padding: EdgeInsetsDirectional.only(
-              start: 15,
-              top: 13,
+              start: 15.w,
+              top: 13.h,
             ),
             child: prefix,
           )

@@ -7,8 +7,11 @@ import 'package:said_store/ui/auth/login_screen.dart';
 import 'package:said_store/ui/bn_screen/cart/cart_product_screen.dart';
 import 'package:said_store/ui/bn_screen/favorite/favorite_products_screen.dart';
 import 'package:said_store/ui/bn_screen/home/home_screen.dart';
+import 'package:said_store/ui/bn_screen/order/show_all_order_screen.dart';
 import 'package:said_store/ui/bn_screen/profile/profile_settings_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
+import 'package:said_store/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -26,6 +29,7 @@ class _MainScreenState extends State<MainScreen> with FbNotifications{
     BottomNavigationScreen(title: 'Cart', widget: CartProductScreen()),
     BottomNavigationScreen(title: 'Favorite', widget: FavoriteProductsScreen()),
     BottomNavigationScreen(title: 'Profile', widget: ProfileSettingsScreen()),
+    BottomNavigationScreen(title: 'Order', widget: ShowAllOrdersScreen()),
   ];
   @override
   void initState() {
@@ -63,22 +67,20 @@ class _MainScreenState extends State<MainScreen> with FbNotifications{
               icon: Icon(Icons.person),
               label: 'Profile',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark),
+              label: 'Orders',
+            ),
           ],
         ),
 
         appBar: AppBar(
-          title: AppTextWidget(content :screens[_currentSelect].title,),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                bool logout = await UsersGetxController.to.logout(context);
-                if (logout) {
-                  Get.offAll(LoginScreen());
-                }
-              },
-              icon: Icon(Icons.login),
-            ),
-          ],
+          centerTitle: true,
+          title: AppTextWidget(
+            content: screens[_currentSelect].title,
+            color: AppColors.PRIMARY_TEXT_COLOR,
+            fontSize: 20.sp,
+          ),
         ),
         body: screens[_currentSelect].widget);
   }

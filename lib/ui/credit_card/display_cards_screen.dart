@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/card_getx_controller.dart';
 import 'package:said_store/model/card.dart';
 import 'package:said_store/ui/credit_card/create_credit_card.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:said_store/ui/credit_card/my_card_widget.dart';
+import 'package:said_store/utils/app_colors.dart';
 
 class DisplayCardScreen extends StatelessWidget {
   CardGetxController controller = Get.put(CardGetxController());
@@ -22,7 +23,7 @@ class DisplayCardScreen extends StatelessWidget {
               ? Center(child: CircularProgressIndicator())
               : controller.cards.isNotEmpty
               ? Padding(
-            padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 10.h),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: controller.cards.length,
@@ -43,7 +44,7 @@ class DisplayCardScreen extends StatelessWidget {
               },
             ),
           )
-              : Center(child: Text('no data'));
+              : Center(child: Text('No Data'));
         },
       ),
 
@@ -51,6 +52,7 @@ class DisplayCardScreen extends StatelessWidget {
         onPressed: (){
           Get.to(CreateCreditCard());
         },
+        backgroundColor: AppColors.PRIMARY_COLOR,
         child: Icon(Icons.add),
       ),
     );

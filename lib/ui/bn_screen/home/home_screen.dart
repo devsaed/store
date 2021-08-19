@@ -8,11 +8,13 @@ import 'package:said_store/model/home.dart';
 import 'package:said_store/ui/category/category_screen.dart';
 import 'package:said_store/ui/category/sub_categoey_screen.dart';
 import 'package:said_store/ui/bn_screen/home/home_product.dart';
+import 'package:said_store/ui/product/product_details.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/category/category_widget.dart';
 import 'package:said_store/ui/bn_screen/home/home_category.dart';
 import 'package:said_store/ui/product/product_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -31,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
       controller.home != null ? ListView(
         children: [
           SizedBox(
-            height: 400,
+            height: 400.h,
             child: CarouselSlider(
               options: CarouselOptions(
-                height: 400,
+                height: 400.h,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,
@@ -49,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Builder(
                   builder: (BuildContext context) {
                     return CachedNetworkImage(
-                      height: 400,
+                      height: 400.h,
                       width: double.infinity,
                       imageUrl: slider.imageUrl,
                       placeholder: (context, url) => Center(
@@ -66,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 10, left: 10, right: 10),
+            padding: EdgeInsets.only(top: 25.h, bottom: 10.h, left: 10.w, right: 10.w,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -79,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
-            height: 235,
+            height: 235.h,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -94,11 +96,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 10, left: 10, right: 10),
+            padding: EdgeInsets.only(top: 25.h, bottom: 10.h, left: 10.w, right: 10.w,),
             child: AppTextWidget(content: 'Famous Products'),
           ),
           SizedBox(
-            height: 300,
+            height: 300.h,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -106,16 +108,16 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 return HomeProductWidget(
                     product: controller.home!.latestProducts[index],
-                    onTap: () {});
+                    onTap: () => Get.to(ProductDetailsScreen(productDetails: controller.home!.latestProducts[index]),));
               },
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 10, left: 10, right: 10),
+            padding: EdgeInsets.only(top: 25.h, bottom: 10.h, left: 10.w, right: 10.w,),
             child: AppTextWidget(content: 'Famous Products'),
           ),
           SizedBox(
-            height: 300,
+            height: 300.h,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -123,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 return HomeProductWidget(
                     product: controller.home!.famousProducts[index],
-                    onTap: () {});
+                    onTap: () => Get.to(ProductDetailsScreen(productDetails: controller.home!.famousProducts[index]),));
               },
             ),
           ),

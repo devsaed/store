@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/cities_getx_controller.dart';
+import 'package:said_store/getx/user_getx_controller.dart';
 import 'package:said_store/local_storge/shared_preferences/preferences.dart';
 import 'package:said_store/model/city.dart';
 import 'package:said_store/ui/city/cities_screen.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:said_store/utils/app_colors.dart';
+import 'package:said_store/utils/helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -43,21 +48,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(32),
+          padding: EdgeInsets.all(32.h),
           child: Column(
             children: [
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
               SvgPicture.asset(
                 'assets/svg/logo_blue.svg',
-                height: 83,
-                width: 61.21,
+                height: 83.h,
+                width: 61.w,
               ),
-              SizedBox(height: 80),
+              SizedBox(height: 80.h),
               AppTextField(
                 controller: nameController,
                 label: 'Name',
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               GestureDetector(
                 onTap: () async {
                   City selectedCity = await Get.to(CitiesScreen());
@@ -66,9 +71,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   });
                 },
                 child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 28),
+                    padding: EdgeInsets.symmetric(horizontal: 28.w),
                     alignment: AlignmentDirectional.centerStart,
-                    height: 50,
+                    height: 50.h,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -79,15 +84,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 blurRadius: 10,
                                 spreadRadius: 0)
                           ],
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(color: Colors.grey)),
+                          borderRadius: BorderRadius.circular(50.h),
+                          border: Border.all(color: Colors.grey),),
                     child: getCityName()),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Row(
                 children: [
                   Expanded(
                     child: CheckboxListTile(
+                      checkColor: Colors.white,
+                      activeColor: AppColors.PRIMARY_COLOR,
                       value: isMale,
                       onChanged: (var selected) {
                         setState(() {
@@ -99,11 +106,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   VerticalDivider(
                     color: Colors.red,
-                    width: 50,
-                    thickness: 5,
+                    width: 40.w,
+                    thickness: 5.h,
                   ),
                   Expanded(
                     child: CheckboxListTile(
+                      checkColor: Colors.white,
+                      activeColor: AppColors.PRIMARY_COLOR,
                       value: !isMale,
                       onChanged: (var selected) {
                         setState(() {
@@ -115,8 +124,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 42),
-              AppElevatedButton(text: 'Login', onPressed: () async {
+              SizedBox(height: 42.h),
+              AppElevatedButton(text: 'Update', onPressed: () async {
                 await performRegister();
               }),
             ],
@@ -147,30 +156,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+
   Future<void> performRegister() async {
     if (checkData()) {
-      // await register();
+      update();
     }
   }
 
   bool checkData() {
-    if (nameController.text.isNotEmpty &&
-        city != null) {
+    if (nameController.text.isNotEmpty) {
       return true;
     }
-    return false;
+    else{
+      Helper.showSnackBar(context, text: 'complete fields', error: true);
+      return false;
+    }
   }
-  //
-  // Future<void> register() async {
-  //   int? code = await UsersGetxController.to.register(context: context, name: nameController.text, mobile: phoneController.text, password: passwordController.text, gender: isMale?'M':'F', city: city!.id);
-  //   if (code!=null) {
-  //     Helper.showSnackBar(
-  //         context,
-  //         text: code.toString(),
-  //         error: true);
-  //     Get.off(ActivationScreen(mobile: phoneController.text));
-  //   }
-  //
-  // }
+
+  Future<void> update() async {
+    bool status = await UsersGetxController.to.updateProfile(context: context, name: nameController.text, gender: isMale?'M':'F', city: city == null ? SharedPreferencesController().user!.cityId : city!.id);
+    if(status){
+      await SharedPreferencesController().setCityId(city == null ? SharedPreferencesController().user!.cityId: city!.id);
+      await SharedPreferencesController().setName(nameController.text);
+      await SharedPreferencesController().setGender(isMale?'M':'F');
+    }
+  }
 
 }

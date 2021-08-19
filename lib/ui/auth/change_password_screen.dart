@@ -64,13 +64,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             label: 'Old Password',
             isPassword: true,
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 15.h),
           AppTextField(
             controller: _newPasswordEditingController,
             label: 'New Password',
             isPassword: true,
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 15.h),
           AppTextField(
             controller: _newPasswordConfirmationEditingController,
             label: 'New password Confirmation',

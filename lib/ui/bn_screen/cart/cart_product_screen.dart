@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/cart_getx_controller.dart';
 import 'package:said_store/model/cart_item.dart';
-import 'package:said_store/ui/order/order_screen.dart';
+import 'package:said_store/ui/bn_screen/order/create_order_screen.dart';
 import 'package:said_store/ui/widgets/app_elevated_button.dart';
 import 'package:said_store/ui/bn_screen/cart/product_cart_widget.dart';
 import 'package:said_store/utils/helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartProductScreen extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class CartProductScreen extends StatelessWidget {
               ? Center(child: CircularProgressIndicator())
               : controller.cartItem.isNotEmpty
               ? Container(
-            padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 10.h),
             child: Column(
               children: [
                 Expanded(
@@ -50,7 +51,7 @@ class CartProductScreen extends StatelessWidget {
             ),
           )
               : Center(
-            child: Text('no data'),
+            child: Text('No Data'),
           );
         },
       ),

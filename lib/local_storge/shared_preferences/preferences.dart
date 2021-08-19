@@ -22,6 +22,19 @@ class SharedPreferencesController {
     return await sharedPreferences.setString('language_code', languageCode);
   }
 
+
+  Future<bool> setName(String name) async {
+    return await sharedPreferences.setString('name', name);
+  }
+
+  Future<bool> setGender(String gender) async {
+    return await sharedPreferences.setString('gender', gender);
+  }
+
+  Future<bool> setCityId(int cityId) async {
+    return await sharedPreferences.setInt('cityId', cityId);
+  }
+
   Future<void> save({required User user}) async {
     await sharedPreferences.setBool('logged_in', true);
     await sharedPreferences.setInt('id', user.id);
@@ -53,6 +66,8 @@ class SharedPreferencesController {
 
   bool get loggedIn => sharedPreferences.getBool('logged_in') ?? false;
   String get token => sharedPreferences.getString('token') ?? '';
+
+
 
   Future<bool> logout() async {
     return await sharedPreferences.clear();

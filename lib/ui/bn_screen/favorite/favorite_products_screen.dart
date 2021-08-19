@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
 import 'package:said_store/ui/product/product_details.dart';
 import 'package:said_store/ui/bn_screen/favorite/favorite_product_widget.dart';
-import 'package:said_store/ui/product/product_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavoriteProductsScreen extends StatefulWidget {
   @override
@@ -26,9 +26,9 @@ class _FavoriteProductsScreenState extends State<FavoriteProductsScreen> {
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 5,
-                      childAspectRatio: 146 / 250,
-                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 5.h,
+                      childAspectRatio: 146.w / 280.h,
+                      mainAxisSpacing: 20.w,
                     ),
                     itemBuilder: (context, index) {
                       return FavoriteProductWidget(
@@ -39,23 +39,7 @@ class _FavoriteProductsScreenState extends State<FavoriteProductsScreen> {
                   )
                 : Center(child: Text('no data'));
       }),
-      padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
-      // child: GridView.builder(
-      //   scrollDirection: Axis.vertical,
-      //   itemCount: ProductGetxController.to.favoriteProducts.length,
-      //   shrinkWrap: true,
-      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //     crossAxisCount: 2,
-      //     crossAxisSpacing: 25,
-      //     childAspectRatio: 146 / 280,
-      //     mainAxisSpacing: 40,
-      //   ),
-      //   itemBuilder: (context, index) {
-      //     return ProductWidget(
-      //         product: ProductGetxController.to.favoriteProducts[index],
-      //         onTap: () => {});
-      //   },
-      // ),
+      padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 10.h),
     );
   }
 }

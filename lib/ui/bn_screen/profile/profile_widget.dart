@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/app_text_widget.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -22,24 +22,24 @@ class ProfileWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ?? () {},
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 23, horizontal: 20),
-        margin: EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: 23.h, horizontal: 20.w),
+        margin: EdgeInsets.symmetric(vertical: 8.h),
         child: Row(
           children: [
             leading,
-            SizedBox(width: 15),
+            SizedBox(width: 15.w),
             AppTextWidget(
               content: label,
               color: labelColor,
               fontWeight: FontWeight.w500,
-              fontSize: 15,
+              fontSize: 15.sp,
             ),
             Spacer(),
-            trailingIcon != null ? Icon(trailingIcon, size: 13, color: Colors.grey,) : Container(),
+            trailingIcon != null ? Icon(trailingIcon, size: 13.h, color: Colors.grey,) : Container(),
           ],
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(18.h),
           color: Colors.white,
           boxShadow: <BoxShadow>[
             BoxShadow(

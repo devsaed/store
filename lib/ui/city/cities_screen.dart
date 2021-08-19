@@ -6,7 +6,6 @@ import 'package:said_store/ui/city/city_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CitiesScreen extends StatelessWidget {
-  CitiesGetxController controller = Get.put(CitiesGetxController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,7 @@ class CitiesScreen extends StatelessWidget {
                           );
                         },
                       )
-                    : AppTextWidget(content: 'no Data');
+                    : AppTextWidget(content: 'No Data');
           },
         ),
       ),

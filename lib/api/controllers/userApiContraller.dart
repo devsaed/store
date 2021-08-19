@@ -12,17 +12,6 @@ import '../api_settings.dart';
 import '../helper/api_mixin.dart';
 
 class UserApiController with ApiMixin {
-  // Future<User?> login(BuildContext context, {required String mobile, required String password}) async {
-  //   var response = await http.post(getUrl(ApiSettings.LOGIN), body: {'mobile': mobile, 'password': password}, headers: baseHeader);
-  //   if (isSuccessRequest(response.statusCode)) {
-  //     return User.fromJson(jsonDecode(response.body)['data']);
-  //   } else if (response.statusCode != 500) {
-  //     showMessage(context, response, error: true);
-  //     return null;
-  //   }
-  //   handleServerError(context);
-  //   return null;
-  // }
 
   Future<User?> login(BuildContext context,
       {required String mobile, required String password, String? fcm_token='' }) async {
@@ -211,6 +200,29 @@ class UserApiController with ApiMixin {
       return newFcmToken;
     }
     return 'false';
+  }
+
+  Future<bool> updateProfile(
+      {required BuildContext context,
+        required String name,
+        required String gender,
+        required int city,
+      }) async {
+    var response = await http.post(getUrl(ApiSettings.UPDATE_PROFILE), body: {
+      'name': name,
+      'gender': gender,
+      'city_id': city.toString(),
+    },headers: requestHeaders);
+    if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
+      return true;
+    } else if (response.statusCode != 500) {
+      showMessage(context, response, error: true);
+      return false;
+    }else{
+      handleServerError(context);
+      return false;
+    }
   }
 
 }

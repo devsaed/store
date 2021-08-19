@@ -5,25 +5,27 @@ import 'package:said_store/locale/app_locale.dart';
 import 'package:said_store/ui/address/address_screen.dart';
 import 'package:said_store/ui/auth/change_password_screen.dart';
 import 'package:said_store/ui/auth/login_screen.dart';
+import 'package:said_store/ui/auth/profile_screen.dart';
 import 'package:said_store/ui/contact/contact_us_screen.dart';
 import 'package:said_store/ui/credit_card/display_cards_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/ui/bn_screen/profile/profile_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 15),
+            padding: EdgeInsets.only(top: 25.h, bottom: 15.h),
             child: AppTextWidget(
               content: 'general',
               color: Colors.black,
-              fontSize: 15,
+              fontSize: 15.sp,
               textAlign: TextAlign.center,
             ),
           ),
@@ -61,7 +63,7 @@ class ProfileSettingsScreen extends StatelessWidget {
           ProfileWidget(
             label: 'edit- profile',
             leading: Icon(Icons.person),
-            onTap: () {},
+            onTap: () =>Get.to(ProfileScreen())
           ),
           ProfileWidget(
             label: 'logout',

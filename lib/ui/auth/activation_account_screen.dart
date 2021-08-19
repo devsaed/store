@@ -7,6 +7,7 @@ import 'package:said_store/ui/widgets/app_text_field.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 import 'package:said_store/utils/helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ActivationScreen extends StatefulWidget {
@@ -40,22 +41,22 @@ class _ActivationScreenState extends State<ActivationScreen> {
         title: AppTextWidget(
           content: 'Activation Account',
           color: AppColors.PRIMARY_TEXT_COLOR,
-          fontSize: 20,
+          fontSize: 20.sp,
         ),
       ),
 
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 50),
+        padding: EdgeInsets.symmetric(horizontal: 50.w),
         children: [
-          SizedBox(height: 70),
+          SizedBox(height: 70.h),
           AppTextWidget(
             content: 'Please enter your code number to verification the account',
             color: Colors.grey,
-            fontSize: 15,
+            fontSize: 15.sp,
             fontWeight: FontWeight.normal,
           ),
           SizedBox(
-            height: 60,
+            height: 60.h,
           ),
           AppTextField(
             label: 'Code',
@@ -63,7 +64,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
             textInputType: TextInputType.phone,
           ),
           SizedBox(
-            height: 43,
+            height: 43.h,
           ),
           AppElevatedButton(text: 'Continue',
               onPressed: () async => await performActivate()),

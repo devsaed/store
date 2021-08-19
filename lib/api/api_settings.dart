@@ -8,6 +8,7 @@ class ApiSettings {
   static const String FORGET_PASSWORD = _BASE_URL + "auth/forget-password";
   static const String ACTIVATE_ACCOUNT = _BASE_URL + "auth/activate";
   static const String CHANGE_PASSWORD = _BASE_URL + "auth/change-password";
+  static const String UPDATE_PROFILE = _BASE_URL + "auth/update-profile";
   static const String CONTACT_US = _BASE_URL + "contact-requests";
   static const String HOME = _BASE_URL + "home";
   static const String refresh_fcm_token = _BASE_URL + "/auth/refresh-fcm-token";

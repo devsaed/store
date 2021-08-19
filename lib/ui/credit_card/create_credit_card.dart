@@ -9,6 +9,7 @@ import 'package:said_store/ui/widgets/card_text_field.dart';
 import 'package:said_store/ui/credit_card/my_card_widget.dart';
 import 'package:said_store/utils/app_colors.dart';
 import 'package:said_store/utils/helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateCreditCard extends StatefulWidget {
   const CreateCreditCard({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(25),
+          padding: EdgeInsets.all(25.h),
           child: Column(
             children: [
               MyCardWidget(
@@ -78,6 +79,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                       },
                     ),
 
+                    SizedBox(height: 5.h,),
                     GestureDetector(
                       onTap: () async {
                         flag = false;
@@ -91,9 +93,9 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                         });
                       },
                       child: Container(
-                          padding: EdgeInsetsDirectional.only(start: 28, end: 10),
+                          padding: EdgeInsetsDirectional.only(start: 28.w, end: 10.w),
                           alignment: AlignmentDirectional.centerStart,
-                          height: 50,
+                          height: 50.h,
                           width: double.infinity,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -105,7 +107,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                                   spreadRadius: 0,
                                 ),
                               ],
-                              borderRadius: BorderRadius.circular(25),
+                              borderRadius: BorderRadius.circular(25.h),
                               border: Border.all(color: Colors.grey.shade300,width: 1.5)),
                           child: Row(
                             children: [
@@ -118,6 +120,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                             ],
                           )),
                     ),
+                    SizedBox(height: 30.h,),
                     CardTextField(
                       controller: cvvEditingController,
                       label: 'CVV',
@@ -135,6 +138,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                         });
                       },
                     ),
+                    SizedBox(height: 5.h,),
                     CardTextField(
                       controller: holderNameEditingController,
                       label: 'Holder Name',
@@ -150,6 +154,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                         });
                       },
                     ),
+                    SizedBox(height: 30.h,),
                     Row(
                       children: [
                         Expanded(
@@ -164,15 +169,15 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                             },
                             title: AppTextWidget(
                               content: 'VISA',
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               color: AppColors.PRIMARY_TEXT_COLOR,
                             ),
                           ),
                         ),
                         VerticalDivider(
                           color: Colors.red,
-                          width: 50,
-                          thickness: 5,
+                          width: 30.w,
+                          thickness: 5.h,
                         ),
                         Expanded(
                           child: CheckboxListTile(
@@ -186,13 +191,14 @@ class _CreateCreditCardState extends State<CreateCreditCard> {
                             },
                             title: AppTextWidget(
                               content: 'MASTER',
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               color: AppColors.PRIMARY_TEXT_COLOR,
                             ),
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(height: 30.h,),
                     AppElevatedButton(text: 'Save', onPressed: ()async {
                      await performSave(context);
                     })
