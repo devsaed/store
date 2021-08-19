@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/address_getx_controller.dart';
+import 'package:said_store/model/address_details.dart';
 import 'package:said_store/ui/address/add_address_screen.dart';
 import 'package:said_store/ui/address/address_edite_screen.dart';
 import 'package:said_store/ui/address/address_widget.dart';
 
 class AddressScreen extends StatelessWidget {
   AddressGetxController controller = Get.put(AddressGetxController());
+  final bool fromOrder;
+
+  AddressScreen({this.fromOrder = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +22,17 @@ class AddressScreen extends StatelessWidget {
               ? Center(child: CircularProgressIndicator())
               : controller.addresses.isNotEmpty
                   ? Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 29, vertical: 10),
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: controller.addresses.length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-                          return AddressWidget(address: controller.addresses[index],);
+                          return AddressWidget(
+                            address: controller.addresses[index],
+                            onTap: () => popScreen(address: controller.addresses[index]),
+                          );
                         },
                       ),
                     )
@@ -38,5 +46,9 @@ class AddressScreen extends StatelessWidget {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  popScreen({required AddressDetails address}) {
+    if (fromOrder) Get.back(result: address);
   }
 }

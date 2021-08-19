@@ -21,15 +21,15 @@ class UsersGetxController extends GetxController {
     super.onInit();
   }
 
-  Future<bool> login({required BuildContext context,required String mobile, required String password}) async {
-    User? user = await _userApiController.login(context, mobile: mobile, password: password);
-    if (user != null) {
-      await SharedPreferencesController().save(user: user);
-      this.user = user;
-      return true;
-    }
-    return false;
-  }
+  // Future<bool> login({required BuildContext context,required String mobile, required String password}) async {
+  //   User? user = await _userApiController.login(context, mobile: mobile, password: password);
+  //   if (user != null) {
+  //     await SharedPreferencesController().save(user: user);
+  //     this.user = user;
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   Future<bool> resetPassword({required BuildContext context, required String mobile, required String code, required String password}) async {
     bool status = await _userApiController.resetPassword(context, mobile: mobile, code: code, password: password);
@@ -65,5 +65,15 @@ class UsersGetxController extends GetxController {
 
   Future<void> initHome() async {
     home =  await _userApiController.initHome();
+  }
+
+  Future<bool> login({required BuildContext context,required String mobile, required String password, String? newFcmToken,}) async {
+    User? user = await _userApiController.login(context, mobile: mobile, password: password,fcm_token:newFcmToken);
+    if (user != null) {
+      await SharedPreferencesController().save(user: user);
+      this.user = user;
+      return true;
+    }
+    return false;
   }
 }

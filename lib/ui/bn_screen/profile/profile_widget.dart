@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_text_widget.dart';
+import '../../widgets/app_text_widget.dart';
 
 class ProfileWidget extends StatelessWidget {
   final String label;

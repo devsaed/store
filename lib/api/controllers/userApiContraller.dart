@@ -12,8 +12,22 @@ import '../api_settings.dart';
 import '../helper/api_mixin.dart';
 
 class UserApiController with ApiMixin {
-  Future<User?> login(BuildContext context, {required String mobile, required String password}) async {
-    var response = await http.post(getUrl(ApiSettings.LOGIN), body: {'mobile': mobile, 'password': password}, headers: baseHeader);
+  // Future<User?> login(BuildContext context, {required String mobile, required String password}) async {
+  //   var response = await http.post(getUrl(ApiSettings.LOGIN), body: {'mobile': mobile, 'password': password}, headers: baseHeader);
+  //   if (isSuccessRequest(response.statusCode)) {
+  //     return User.fromJson(jsonDecode(response.body)['data']);
+  //   } else if (response.statusCode != 500) {
+  //     showMessage(context, response, error: true);
+  //     return null;
+  //   }
+  //   handleServerError(context);
+  //   return null;
+  // }
+
+  Future<User?> login(BuildContext context,
+      {required String mobile, required String password, String? fcm_token='' }) async {
+    var response = await http.post(getUrl(ApiSettings.LOGIN),
+        body: {'mobile': mobile, 'password': password,'fcm_token':fcm_token }, headers: baseHeader);
     if (isSuccessRequest(response.statusCode)) {
       return User.fromJson(jsonDecode(response.body)['data']);
     } else if (response.statusCode != 500) {
@@ -185,6 +199,18 @@ class UserApiController with ApiMixin {
     }
   }
 
-
+  Future<String> refreshFcmToken( {required String newFcmToken}) async {
+    var response = await http.post(
+        getUrl(ApiSettings.refresh_fcm_token),
+        body: {
+          'fcm_token': newFcmToken,
+        },
+        headers: header
+    );
+    if (isSuccessRequest(response.statusCode)) {
+      return newFcmToken;
+    }
+    return 'false';
+  }
 
 }

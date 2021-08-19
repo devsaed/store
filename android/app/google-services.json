@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1070645639749",
+    "project_id": "said-store",
+    "storage_bucket": "said-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070645639749:android:71a1603a0ce1eac5edc12c",
+        "android_client_info": {
+          "package_name": "com.example.said_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070645639749-1a3ste3kpcbhvmu1o3l7lar5lqmv66mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbl1rSAlhTJOs8YsZvrwKw5O37lUZAme0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070645639749-1a3ste3kpcbhvmu1o3l7lar5lqmv66mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

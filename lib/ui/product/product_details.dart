@@ -45,19 +45,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ? Center(child: CircularProgressIndicator())
               : Stack(
                   children: [
-                    // CachedNetworkImage(
-                    //   imageUrl: ProductGetxController
-                    //       .to.productDetails.value!.images[2].imageUrl,
-                    //   placeholder: (context, url) => Center(
-                    //     child: CircularProgressIndicator(
-                    //       color: AppColors.PRIMARY_COLOR,
-                    //     ),
-                    //   ),
-                    //   errorWidget: (context, url, error) => Icon(Icons.error),
-                    //   height: 445.h,
-                    //   width: double.infinity,
-                    //   fit: BoxFit.cover,
-                    // ),
                     SizedBox(
                       height: 445.h,
                       child: CarouselSlider(
@@ -68,15 +55,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           reverse: false,
                           autoPlay: true,
                           autoPlayInterval: Duration(seconds: 3),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
+                          autoPlayAnimationDuration: Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
-                          // enlargeCenterPage: true,
                           scrollDirection: Axis.horizontal,
                         ),
-                        items: ProductGetxController
-                            .to.productDetails.value!.images
-                            .map((ProductImages image) {
+                        items: ProductGetxController.to.productDetails.value!.images.map((ProductImages image) {
                           return Builder(
                             builder: (BuildContext context) {
                               return CachedNetworkImage(
@@ -110,8 +93,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 40),
+                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 40),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -120,19 +102,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   AppTextWidget(
-                                    content: ProductGetxController
-                                        .to.productDetails.value!.nameEn,
+                                    content: ProductGetxController.to.productDetails.value!.nameEn,
                                     color: Colors.black,
                                     fontSize: 26.sp,
                                     fontWeight: FontWeight.w600,
                                   ),
                                   GestureDetector(
                                     onTap: () async {
-                                      await ProductGetxController.to
-                                          .addFavoriteProducts(
-                                              context: context,
-                                              product: ProductGetxController
-                                                  .to.productDetails.value!);
+                                      await ProductGetxController.to.addFavoriteProducts(
+                                          context: context,
+                                          product: ProductGetxController.to.productDetails.value!);
                                     },
                                     child: Container(
                                       height: 52,
@@ -154,34 +133,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                 ],
                               ),
-                              ProductGetxController.to.productDetails.value!
-                                          .offerPrice !=
-                                      null
+                              ProductGetxController.to.productDetails.value!.offerPrice != null
                                   ? AppTextWidget(
-                                      content:
-                                          'Price : ${ProductGetxController.to.productDetails.value!.price} \$  + ${ProductGetxController.to.productDetails.value!.offerPrice}',
+                                      content: 'Price : ${ProductGetxController.to.productDetails.value!.price} \$  + ${ProductGetxController.to.productDetails.value!.offerPrice}',
                                       color: Colors.black,
                                       fontSize: 21.sp,
                                       fontWeight: FontWeight.w600,
                                       textAlign: TextAlign.start,
                                     )
                                   : AppTextWidget(
-                                      content:
-                                          'Price : ${ProductGetxController.to.productDetails.value!.price} \$',
+                                      content: 'Price : ${ProductGetxController.to.productDetails.value!.price} \$',
                                       color: Colors.black,
                                       fontSize: 21.sp,
                                       fontWeight: FontWeight.w600,
                                       textAlign: TextAlign.start,
                                     ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
+                              SizedBox(height: 8),
+                              SizedBox(height: 8),
                               AppTextWidget(
-                                content: ProductGetxController
-                                    .to.productDetails.value!.infoEn,
+                                content: ProductGetxController.to.productDetails.value!.infoEn,
                                 color: Colors.grey,
                                 fontSize: 16.sp,
                                 textAlign: TextAlign.start,
@@ -211,9 +181,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               // ),
                               Spacer(),
                               AppElevatedButton(
-                                onPressed: () {
-                                  showCartDialog();
-                                },
+                                onPressed: () => showCartDialog(),
                                 text: 'Add to cart',
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
@@ -232,8 +200,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (BuildContext context) =>
-          StatefulBuilder(builder: (context, setState) {
+      builder: (BuildContext context) => StatefulBuilder(builder: (context, setState) {
         return Dialog(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
@@ -342,7 +309,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             if(status){
                               Helper.showSnackBar(context, text: 'add suc');
                               cardIncrement = 1;
-
                             }else{
                               Helper.showSnackBar(context, text: 'add fal');
                               cardIncrement = 1;

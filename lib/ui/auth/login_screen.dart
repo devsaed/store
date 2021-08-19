@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -69,14 +70,15 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: phoneEditingController,
             label: 'Phone Number',
             prefix: AppTextWidget(content: '0'),
-            suffix: Icon(Icons.phone_android_outlined,color: AppColors.PRIMARY_COLOR),
+            suffix: Icon(Icons.phone_android_outlined,
+                color: AppColors.PRIMARY_COLOR),
             textInputType: TextInputType.phone,
           ),
           SizedBox(height: 20.h),
           AppTextField(
             controller: passwordEditingController,
             label: 'Password',
-            suffix: Icon(Icons.lock,color: AppColors.PRIMARY_COLOR),
+            suffix: Icon(Icons.lock, color: AppColors.PRIMARY_COLOR),
             isPassword: true,
           ),
           SizedBox(height: 15.h),
@@ -142,13 +144,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> login() async {
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
     bool status = await UsersGetxController.to.login(
-      context: context,
-      mobile: phoneEditingController.text,
-      password: passwordEditingController.text,
-    );
+        context: context,
+        mobile: phoneEditingController.text,
+        password: passwordEditingController.text,
+        newFcmToken: fcmToken);
     if (status) {
-      Get.off(MainScreen());
+      Get.offAll(MainScreen());
     }
   }
 }

@@ -56,4 +56,16 @@ class CartGetxController extends GetxController {
     return deleted;
   }
 
+  Future<bool> deleteAllItem() async {
+
+    bool deleted = await dbController.deleteAllItem();
+    if (deleted) {
+      cartItem.clear();
+      update();
+      return true;
+    }
+
+    return deleted;
+  }
+
 }

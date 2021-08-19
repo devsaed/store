@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:said_store/model/home.dart';
 import 'package:said_store/utils/app_colors.dart';
 
-import '../widgets/app_text_widget.dart';
+import '../../widgets/app_text_widget.dart';
 
 class HomeCategoryWidget extends StatelessWidget {
   final Categories category;

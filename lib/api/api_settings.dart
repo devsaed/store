@@ -10,6 +10,7 @@ class ApiSettings {
   static const String CHANGE_PASSWORD = _BASE_URL + "auth/change-password";
   static const String CONTACT_US = _BASE_URL + "contact-requests";
   static const String HOME = _BASE_URL + "home";
+  static const String refresh_fcm_token = _BASE_URL + "/auth/refresh-fcm-token";
 
   //Cities Request
   static const String CITIES = _BASE_URL + "cities";
@@ -28,5 +29,8 @@ class ApiSettings {
 
   //card
   static const String CARD = _BASE_URL + "payment-cards";
+
+  //order
+  static const String ORDER = _BASE_URL + "orders";
 
 }

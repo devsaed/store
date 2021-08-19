@@ -9,83 +9,87 @@ import 'package:said_store/utils/app_colors.dart';
 
 class AddressWidget extends StatelessWidget {
   final AddressDetails address;
+  final void Function() onTap;
 
-  AddressWidget({required this.address});
+  AddressWidget({required this.address,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      margin: EdgeInsetsDirectional.only(top: 10.h),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.black.withAlpha(25),
-            offset: Offset(0, 0),
-            blurRadius: 6,
-            spreadRadius: 3,
-          )
-        ],
-        borderRadius: BorderRadius.all(
-          Radius.circular(7.h),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        margin: EdgeInsetsDirectional.only(top: 10.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black.withAlpha(25),
+              offset: Offset(0, 0),
+              blurRadius: 6,
+              spreadRadius: 3,
+            )
+          ],
+          borderRadius: BorderRadius.all(
+            Radius.circular(7.h),
+          ),
         ),
-      ),
-      height: 70.h,
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: 8.w,
-              end: 8.w,
-              top: 8.h,
-              bottom: 8.h,
-            ),
-            child: CircleAvatar(
-              backgroundColor: Colors.grey.shade100,
-              radius: 30.h,
-              child: Icon(
-                Icons.location_on,
-                color: Colors.red.shade900,
-                size: 30.h,
+        height: 70.h,
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.only(
+                start: 8.w,
+                end: 8.w,
+                top: 8.h,
+                bottom: 8.h,
+              ),
+              child: CircleAvatar(
+                backgroundColor: Colors.grey.shade100,
+                radius: 30.h,
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.red.shade900,
+                  size: 30.h,
+                ),
               ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppTextWidget(
-                content: address.info,
-                fontWeight: FontWeight.w500,
-                fontSize: 13.sp,
-              ),
-              SizedBox(height: 5.h),
-              AppTextWidget(
-                content: address.contactNumber,
-                fontWeight: FontWeight.w500,
-                fontSize: 12.sp,
-                color: AppColors.PRIMARY_TEXT_COLOR,
-              ),
-            ],
-          ),
-          Spacer(),
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () async => await performDialog(context),
-          ),
-          Container(
-            alignment: AlignmentDirectional.center,
-            color: AppColors.PRIMARY_COLOR,
-            child: IconButton(
-              onPressed: () => Get.to(EditAddressScreen(address: address)),
-              icon: Icon(
-                Icons.edit,
-                color: Colors.white,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppTextWidget(
+                  content: address.info,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 13.sp,
+                ),
+                SizedBox(height: 5.h),
+                AppTextWidget(
+                  content: address.contactNumber,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.sp,
+                  color: AppColors.PRIMARY_TEXT_COLOR,
+                ),
+              ],
+            ),
+            Spacer(),
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () async => await performDialog(context),
+            ),
+            Container(
+              alignment: AlignmentDirectional.center,
+              color: AppColors.PRIMARY_COLOR,
+              child: IconButton(
+                onPressed: () => Get.to(EditAddressScreen(address: address)),
+                icon: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

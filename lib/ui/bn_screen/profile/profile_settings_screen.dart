@@ -8,7 +8,7 @@ import 'package:said_store/ui/auth/login_screen.dart';
 import 'package:said_store/ui/contact/contact_us_screen.dart';
 import 'package:said_store/ui/credit_card/display_cards_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
-import 'package:said_store/ui/widgets/profile_widget.dart';
+import 'package:said_store/ui/bn_screen/profile/profile_widget.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
   @override

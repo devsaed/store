@@ -6,7 +6,6 @@ class MyCardWidget extends StatefulWidget {
   final String? cardHolderName;
   final String? cvvCode;
   final bool flag;
-
   final CardType? cardType;
 
   MyCardWidget({
@@ -15,7 +14,7 @@ class MyCardWidget extends StatefulWidget {
     this.cardHolderName,
     this.cvvCode,
     this.cardType,
-    this.flag = false
+    this.flag = false,
   });
 
   @override
@@ -23,6 +22,7 @@ class MyCardWidget extends StatefulWidget {
 }
 
 class _MyCardWidgetState extends State<MyCardWidget> {
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;

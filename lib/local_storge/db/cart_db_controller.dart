@@ -36,5 +36,9 @@ class CartDbController extends DbOperations<CartItem> {
     throw UnimplementedError();
   }
 
+  Future<bool> deleteAllItem()async {
+    int countOfDeletedRows = await _database.delete('cart');
+    return countOfDeletedRows != 0;
+  }
 
 }

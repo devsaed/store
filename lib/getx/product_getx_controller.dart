@@ -46,13 +46,16 @@ class ProductGetxController extends GetxController {
   Future<void> addFavoriteProducts({required ProductDetails product,required BuildContext context}) async {
     bool status = await productApiController.addFavoriteProducts(context, id: product.id);
     if(status){
-      int index = products.indexWhere((element) => element.id == product.id);
-      products[index].isFavorite == false ? favoriteProducts.add(product) : favoriteProducts.removeWhere((element) => element.id == products[index].id);
-      products[index].isFavorite = !products[index].isFavorite;
-      productDetails.value!.isFavorite = products[index].isFavorite ;
+      int index = favoriteProducts.indexWhere((element) => element.id == product.id);
+      if(index != -1) {
+        favoriteProducts.removeAt(index);
+        productDetails.value!.isFavorite = !productDetails.value!.isFavorite;
+      } else {
+        favoriteProducts.add(product);
+        productDetails.value!.isFavorite = !productDetails.value!.isFavorite;
+      }
     }
     productDetails.refresh();
-    products.refresh();
     favoriteProducts.refresh();
     update();
   }

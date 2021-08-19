@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:said_store/fb_notifications/fb_notifications.dart';
 import 'package:said_store/getx/user_getx_controller.dart';
 import 'package:said_store/model/bottom_navigation_screen.dart';
 import 'package:said_store/ui/auth/login_screen.dart';
-import 'package:said_store/ui/bn_screen/cart_product_screen.dart';
-import 'package:said_store/ui/bn_screen/favorite_products_screen.dart';
-import 'package:said_store/ui/bn_screen/home_screen.dart';
-import 'package:said_store/ui/bn_screen/profile_settings_screen.dart';
+import 'package:said_store/ui/bn_screen/cart/cart_product_screen.dart';
+import 'package:said_store/ui/bn_screen/favorite/favorite_products_screen.dart';
+import 'package:said_store/ui/bn_screen/home/home_screen.dart';
+import 'package:said_store/ui/bn_screen/profile/profile_settings_screen.dart';
 import 'package:said_store/ui/widgets/app_text_widget.dart';
 
 
@@ -17,7 +18,7 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with FbNotifications{
 
   int _currentSelect = 0;
   List<BottomNavigationScreen> screens =  <BottomNavigationScreen>[
@@ -29,6 +30,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     UsersGetxController.to.initHome();
+    initializeForegroundNotificationForAndroid();
+    manageNotificationAction();
     super.initState();
   }
 

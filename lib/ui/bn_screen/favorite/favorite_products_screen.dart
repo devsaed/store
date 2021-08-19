@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:said_store/getx/product_getx_controller.dart';
 import 'package:said_store/ui/product/product_details.dart';
-import 'package:said_store/ui/widgets/favorite_product_widget.dart';
+import 'package:said_store/ui/bn_screen/favorite/favorite_product_widget.dart';
 import 'package:said_store/ui/product/product_widget.dart';
 
 class FavoriteProductsScreen extends StatefulWidget {

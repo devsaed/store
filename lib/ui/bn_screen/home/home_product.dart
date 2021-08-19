@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:said_store/model/product_details.dart';
 import 'package:said_store/utils/app_colors.dart';
 
-import '../widgets/app_text_widget.dart';
+import '../../widgets/app_text_widget.dart';
 
 class HomeProductWidget extends StatelessWidget {
   final ProductDetails product;
@@ -103,11 +103,6 @@ class HomeProductWidget extends StatelessWidget {
                           color: Colors.grey,
                         ),
                       ],
-                    ),
-                    AppTextWidget(
-                      content: '${product.isFavorite}',
-                      fontSize: 8,
-                      color: Colors.grey,
                     ),
                   ],
                 ),
